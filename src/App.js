@@ -7,8 +7,7 @@ function App() {
   return (
     <div>
 
-      <img width="300px" height="300px" src={image} style={{margin:"200px"}} />
-      
+      <h1>hello from home page</h1>      
     </div>
   );
 }
