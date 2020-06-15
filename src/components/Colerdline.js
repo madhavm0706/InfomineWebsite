@@ -7,6 +7,9 @@ export default function Colerdline({color}) {
         style={{
             color: color,
             backgroundColor: color,
+            width: 200,
+            marginLeft: 50,
+            marginRight: 50
             
         }}
     />

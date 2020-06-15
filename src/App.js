@@ -13,10 +13,10 @@ import GandSTax from './pages/GandSTax';
 import IncomeTax from './pages/IncomeTax';
 import IndianC from './pages/IndianC';
 import ArticlePage from './pages/ArticlePage';
-
 import TopHead from "./components/Tophead";
 import Head from "./components/Head";
 import Footer from './components/Footer';
+import Singlearticle from './pages/Singleaerticle';
 
 import {Switch, Route} from 'react-router-dom';
 
@@ -37,6 +37,8 @@ function App() {
        <Route exact path="/Income-tax" component={IncomeTax} />
        <Route exact path="/Indian-constitution" component={IndianC} />
        <Route exact path="/article-page" component={ArticlePage} />
+       <Route exact path="/single-article-page/:slug" component={Singlearticle} />
+
 
        <Route component={Error} />
      </Switch>

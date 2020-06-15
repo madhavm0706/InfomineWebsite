@@ -1436,37 +1436,8 @@ ul.page-numbers li a.prev::after {
 .js .animate-box {
 	opacity: 0
 }
-/*search popup*/
-.top-search-form {
-	background: #fff none repeat scroll 0 0;
-	display: none;
-	height: 38px;
-	line-height: 38px;
-	position: absolute;
-	top: 0;
-	width: 100%;
-	z-index: 2;
-}
-.top-search-form form.search-form input.search-submit {
-	display: none;
-}
-.top-search-form form.search-form input.search-field {
-	-moz-border-bottom-colors: none;
-	-moz-border-left-colors: none;
-	-moz-border-right-colors: none;
-	-moz-border-top-colors: none;
-	border-color: -moz-use-text-color -moz-use-text-color -moz-use-text-color #000;
-	border-image: none;
-	border-style: none none none solid;
-	border-width: 0 0 0 1px;
-	float: left;
-	font-size: 14px;
-	height: 38px;
-	width: 80%;
-}
-.top-search-form label span {
-	display: none;
-}
+
+
 /*HOME PAGE*/
 /*boxed layout*/
 .boxed {
@@ -2120,15 +2091,4 @@ form p {
 .alith-row.alith-gap-60 .alith-col-nr {
 	margin: 0 0 60px;
 	padding: 0 30px
-}
-/*image hover*/
-.hover_grey:hover {
-	-webkit-filter: grayscale(100%);
-	filter: grayscale(100%);
-	transition: filter .5s ease-in-out;
-}
-/*line*/
-.line_hoz {
-	border-bottom: 1px solid #eee;
-	padding-bottom: 30px;
 }

@@ -10,13 +10,19 @@ const ArticleContext = React.createContext();
       state ={
           items
       }
+      
 
+      getarticle = (slug) => {
+          let temparticle = [...this.state.items];
+          const article = temparticle.find(article => article.slug === slug);
+          return article;
+      }
 
 
     render() {
         return (
             <>
-              <ArticleContext.Provider value={{...this.state}}> 
+              <ArticleContext.Provider value={{...this.state,getarticle:this.getarticle}}> 
                   {this.props.children}
                   
                   </ArticleContext.Provider>  

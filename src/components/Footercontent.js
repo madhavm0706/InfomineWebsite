@@ -4,7 +4,7 @@ import Colerdline from './Colerdline';
 export default function Footercontent() {
     return (
         <div className="container">
-									<div className="row">
+									<div className="row center">
 										<div className="col-md-4 col-sx-12">
 												<div className="content">
 														<h6>Organization</h6><Colerdline color="#cc2127" />
