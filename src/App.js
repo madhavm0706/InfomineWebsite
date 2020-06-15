@@ -13,11 +13,18 @@ import GandSTax from './pages/GandSTax';
 import IncomeTax from './pages/IncomeTax';
 import IndianC from './pages/IndianC';
 
+import TopHead from "./components/Tophead";
+import Head from "./components/Head";
+
 import {Switch, Route} from 'react-router-dom';
 
 function App() {
   return (
     <>
+    <div>
+      <TopHead />
+      <Head/>
+    </div>
      <Switch>
        <Route exact path="/" component={Home} />
        <Route exact path="/other" component={Other} />
