@@ -12,6 +12,7 @@ import Economics from './pages/Economics';
 import GandSTax from './pages/GandSTax';
 import IncomeTax from './pages/IncomeTax';
 import IndianC from './pages/IndianC';
+import ArticlePage from './pages/ArticlePage';
 
 import {Switch, Route} from 'react-router-dom';
 
@@ -27,8 +28,11 @@ function App() {
        <Route exact path="/goods-and-service-tax" component={GandSTax} />
        <Route exact path="/Income-tax" component={IncomeTax} />
        <Route exact path="/Indian-constitution" component={IndianC} />
+       <Route exact path="/article-page" component={ArticlePage} />
+
        <Route component={Error} />
      </Switch>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
             
     </>
   );
