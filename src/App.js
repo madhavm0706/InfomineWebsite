@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 
+
 import image from './images/infomine.jpg';
 
 import Home from './pages/Home';
@@ -17,6 +18,8 @@ import TopHead from "./components/Tophead";
 import Head from "./components/Head";
 import Footer from './components/Footer';
 import Singlearticle from './pages/Singleaerticle';
+
+import GotoTop from './components/GotoTop';
 
 import {Switch, Route} from 'react-router-dom';
 
@@ -43,6 +46,7 @@ function App() {
        <Route component={Error} />
      </Switch>
      <Footer />
+     <GotoTop />
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
             
     </>

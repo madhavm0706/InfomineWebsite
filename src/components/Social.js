@@ -13,7 +13,7 @@ export default function Social({title}) {
 											
 													
 									<script src="https://apps.elfsight.com/p/platform.js" defer></script>
-									<div class="elfsight-app-7bb14144-8697-485a-88b6-5c89b9e3a540"></div>
+									<div className="elfsight-app-7bb14144-8697-485a-88b6-5c89b9e3a540"></div>
 													
 											 
 										
