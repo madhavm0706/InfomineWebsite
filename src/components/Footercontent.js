@@ -7,7 +7,7 @@ export default function Footercontent() {
 									<div className="row center">
 										<div className="col-md-4 col-sx-12">
 												<div className="content">
-														<h6>Organization</h6><Colerdline color="#cc2127" />
+														<h6>Organization</h6><Colerdline color="#cc2127" marginleft="50" marginright="50" />
 								  
 														<ul className="footer-links">
 														  <li><a href="http://scanfcode.com/about/">About Us</a></li>
@@ -18,7 +18,7 @@ export default function Footercontent() {
 										</div>
 										<div className="col-md-4 col-sx-12">
 												<div className="content">
-														<h6>Quick Links</h6><Colerdline color="#cc2127" />
+														<h6>Quick Links</h6><Colerdline color="#cc2127" marginleft="50" marginright="50" />
 								  
 														<ul className="footer-links">
 														  <li><a href="http://scanfcode.com/about/">About Us</a></li>
@@ -29,7 +29,7 @@ export default function Footercontent() {
 											</div>
 											<div className="col-md-4 col-sx-12">
 													<div className="content">
-															<h6>Contact Info</h6><Colerdline color="#cc2127" />
+															<h6>Contact Info</h6><Colerdline color="#cc2127" width="200" marginleft="50" marginright="50" />
 									  
 															<ul className="footer-links">
 															  <li><a href="http://scanfcode.com/about/"><i className="fas fa-phone"></i> &nbsp; +91-9876543210</a></li>

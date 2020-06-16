@@ -1,15 +1,15 @@
 import React from 'react'
 
-export default function Colerdline({color}) {
+export default function Colerdline({color,width,marginleft,marginright}) {
 
     return (
         <hr
         style={{
             color: color,
             backgroundColor: color,
-            width: 200,
-            marginLeft: 50,
-            marginRight: 50
+            width: width,
+            marginLeft: parseInt(marginleft),
+            marginRight:parseInt(marginright)
             
         }}
     />

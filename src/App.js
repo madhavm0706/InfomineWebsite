@@ -18,6 +18,7 @@ import TopHead from "./components/Tophead";
 import Head from "./components/Head";
 import Footer from './components/Footer';
 import Singlearticle from './pages/Singleaerticle';
+import Post from './pages/Post';
 
 import GotoTop from './components/GotoTop';
 
@@ -41,6 +42,8 @@ function App() {
        <Route exact path="/Indian-constitution" component={IndianC} />
        <Route exact path="/article-page" component={ArticlePage} />
        <Route exact path="/single-article-page/:slug" component={Singlearticle} />
+       <Route exact path="/postyourarticle" component={Post} />
+
 
 
        <Route component={Error} />
