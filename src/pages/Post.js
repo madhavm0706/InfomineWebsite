@@ -91,7 +91,11 @@ export default class Post extends Component{
 
                 </div>
             </form>
+            <p>**For preview or share with admins first save your article on Drafts by click 'Save On Draft' Button</p>
+
            <Coloredline color="black" width="400" />
+
+
                            
                     </div>
                     

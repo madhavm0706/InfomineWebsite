@@ -19,7 +19,11 @@ import Head from "./components/Head";
 import Footer from './components/Footer';
 import Singlearticle from './pages/Singleaerticle';
 import Post from './pages/Post';
-
+import Login from './pages/Login';
+import Articleinfo from './pages/Articleinfo';
+import Postedarticle from './pages/Postedarticle';
+import Articleadmin from './pages/Articleadmin';
+ 
 import GotoTop from './components/GotoTop';
 
 import {Switch, Route} from 'react-router-dom';
@@ -42,7 +46,13 @@ function App() {
        <Route exact path="/Indian-constitution" component={IndianC} />
        <Route exact path="/article-page" component={ArticlePage} />
        <Route exact path="/single-article-page/:slug" component={Singlearticle} />
-       <Route exact path="/postyourarticle" component={Post} />
+       <Route exact path="/postyourarticle/article" component={Post} />
+       <Route exact path="/postyourarticle/login" component={Login} />
+       <Route exact path="/postyourarticle/drafts" component={Articleinfo} />
+       <Route exact path="/postyourarticle/posted-articles" component={Postedarticle} />
+       <Route exact path="/postyourarticle/article-by-other-admin" component={Articleadmin} />
+
+
 
 
 

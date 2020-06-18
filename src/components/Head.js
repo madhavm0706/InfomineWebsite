@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 const Head = () =>{
     return(
@@ -7,7 +8,7 @@ const Head = () =>{
 						<div className="row">
 							<div className="col-12 col-md-12 header">
 								
-								<h1 className="logo"><a href="./index.html">InfoMine</a></h1>
+								<h1 className="logo"><Link to="/">InfoMine</Link></h1>
 								<p className="tagline">Your Learning Destination</p>
 							</div>
 						</div>
