@@ -51,5 +51,16 @@ export default [
         description:"",
         image:img
     },
+    {
+        id:"5",
+        name:"Amendment to the Indian Constitution",
+        publishedBy:"Udit Maheshwari",
+        date:"12",
+        month:"Jun",
+        slug:"Amendment to the Indian Constitution-By-Rishabh Mittal",
+        description:"",
+        image:img
+    },
+    
     
 ]

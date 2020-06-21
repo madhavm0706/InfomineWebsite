@@ -7,11 +7,15 @@ import * as serviceWorker from './serviceWorker';
 import {BrowserRouter as Router} from 'react-router-dom'; 
 import {ArticleProvider} from './Context';
 
+import {ArticlesProvider} from './context/Articlecontext';
+
 ReactDOM.render(
   <ArticleProvider>
+  <ArticlesProvider>
   <Router>
     <App />
   </Router>
+  </ArticlesProvider>
   </ArticleProvider>,
   document.getElementById('root')
 );
