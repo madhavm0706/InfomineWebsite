@@ -8,15 +8,19 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import {ArticleProvider} from './Context';
 
 import {ArticlesProvider} from './context/Articlecontext';
+import {AuthProvider} from './context/authContext';
 
 ReactDOM.render(
+  <AuthProvider>
   <ArticleProvider>
   <ArticlesProvider>
   <Router>
     <App />
   </Router>
   </ArticlesProvider>
-  </ArticleProvider>,
+  </ArticleProvider>
+  </AuthProvider>
+  ,
   document.getElementById('root')
 );
 
