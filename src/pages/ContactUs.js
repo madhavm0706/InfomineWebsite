@@ -3,12 +3,25 @@ import React from 'react';
 import * as firebase from 'firebase';
 import 'firebase/firestore';
 
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+
+  today = mm + '/' + dd + '/' + yyyy;
+  
+
 class ContactUs extends React.Component {
+
+  
+  
     constructor() {
         super();
         this.state = {
          email: "",
-         review: ""
+         review: "",
+         date: {today}
+
         };
       }
 
@@ -27,11 +40,12 @@ class ContactUs extends React.Component {
         });
         const userRef = db.collection("contactFormDetails").add({
           email: this.state.email,
-          review: this.state.review
+          review: this.state.review,
+          date: this.state.date
         });  
         this.setState({
             email: "",
-            review: ""
+            review: "",
         });
       };
   render() {
@@ -52,6 +66,14 @@ class ContactUs extends React.Component {
             onChange={this.updateInput}
             value={this.state.review}
           />
+          <div>
+          <label>
+            Date:
+          </label>
+          <input name="date" value={today} readonly />
+          {/* todo: Sanjana "Add present date" */}
+          </div>
+          
           <button type="submit">Submit</button>
         </form>
         );
