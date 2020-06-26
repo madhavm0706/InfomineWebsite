@@ -4,17 +4,6 @@ import 'firebase/auth';
 import 'firebase/storage';
 
 
-// var firebaseConfig = {
-//     apiKey: "AIzaSyAs0qlAayTqp7_eGVcZ2dsOml37GeMygb4",
-//     authDomain: "infomine-364d1.firebaseapp.com",
-//     databaseURL: "https://infomine-364d1.firebaseio.com",
-//     projectId: "infomine-364d1",
-//     storageBucket: "infomine-364d1.appspot.com",
-//     messagingSenderId: "953430068820",
-//     appId: "1:953430068820:web:ec2a991918c5a45aa867c1",
-//     measurementId: "G-V0BBGJP2MV"
-//   };
-
 var firebaseConfig = {
     apiKey: "AIzaSyCmbGzoqb95PSr0DQ8uL6mjHJ835Xf0MjU",
     authDomain: "infomine-basic.firebaseapp.com",
@@ -45,10 +34,9 @@ var firebaseConfig = {
 
           let newPost ={
             name: post.name,
-            date: post.date,
-            month: post.month,
+            
             publishedBy: post.publishedBy,
-            slug: post.slug,
+            date: post.today,
             discription: post.discription,
             cover: downloadurl,
             fileRef: fileRef
@@ -73,13 +61,13 @@ var firebaseConfig = {
 
         let newPost ={
           name: post.name,
-          date: post.date,
-          month: post.month,
+          date: post.today,
           publishedBy: post.publishedBy,
-          slug: post.slug,
+          
           discription: post.discription,
           cover: downloadurl,
-          fileRef: fileRef
+          fileRef: fileRef,
+          user: post.user
         }
 
         const firestorePost = await firebase.firestore().collection("drafts").add(newPost).catch(err =>{
@@ -101,21 +89,106 @@ var firebaseConfig = {
         return postsArray;
     }
 
-    // login for registered user
-    async login(email, password){
-        const user = await firebase.auth().signInWithEmailAndPassword(email, password).catch(err =>{
+    
+
+// save article on draft
+    async getPostedArticlesonDraft(userid){
+        let postsArray = [];
+        const posts = await firebase.firestore().collection("drafts").where("user","==",userid).get();
+        posts.forEach(doc =>{
+            postsArray.push({id:doc.id,data:doc.data()})
+        });
+
+        return postsArray;
+    }
+
+    async getPostedArticle(postid){
+        const post = await firebase.firestore().collection("articles").doc(postid).get();
+        const postdata = post.data();
+        return postdata;
+      }
+
+      async getPost(postid){
+        const post = await firebase.firestore().collection("articles").doc(postid).get();
+        const postdata = post.data();
+        return postdata;
+      }
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      
+
+// Login section
+      async login(email, password){
+        const user = await firebase.auth().signInWithEmailAndPassword(email, password).catch(err => {
             console.log(err);
+            return err;
         });
         return user;
-    }      
+    }
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-    async logout(){
-        const logout = await firebase.auth().signOut().catch(err =>{
-            console.log(err);
-            return err; 
+
+
+    async getUserState(){
+        return new Promise(resolve=> {
+            this.auth.onAuthStateChanged(resolve);
         });
-        return logout;
-    } 
+    }
+
+// delete the article
+    async deleteArticle(postid,fileRef){
+        const storageRef = firebase.storage().ref();
+        await storageRef.child(fileRef).delete().catch(err =>{
+            console.log(err);
+        });
+        console.log("Image deleted");
+        const post = await firebase.firestore().collection("drafts").doc(postid).delete().catch(err =>{
+            console.log(err);
+
+        });
+        console.log("Post deleted");
+
+        return post;
+    }
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+// share an Article
+
+async shareArticle(postid){
+    const post = await firebase.firestore().collection("drafts").doc(postid).get();
+    const postdata = post.data();
+    return postdata;
+  }
+
+async shareArticle1(postid){
+    const post = await firebase.firestore().collection("drafts").doc(postid).get();
+    
+        return post;
+    
+  
+   
+
+    // let sharePost ={
+    //     name: postdata.name,
+    //     date: postdata.date,
+    //     month: postdata.month,
+    //     publishedBy: postdata.publishedBy,
+    //     slug: postdata.slug,
+    //     discription: postdata.discription,
+    //     cover: postdata.downloadurl,
+    //     fileRef: postdata.fileRef,
+    //     user: postdata.user
+    //   }
+
+    //   const firestorePost = await firebase.firestore().collection("share").add(sharePost).catch(err =>{
+    //       console.log(err);
+    //       return err;
+    //   });
+
+      
+}
+
+// !!!!!!!!!!!
 
   }
 

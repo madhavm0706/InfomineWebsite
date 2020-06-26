@@ -23,6 +23,7 @@ import Login from './pages/Login';
 import Articleinfo from './pages/Articleinfo';
 import Postedarticle from './pages/Postedarticle';
 import Articleadmin from './pages/Articleadmin';
+import Article from './pages/Article';
  
 import GotoTop from './components/GotoTop';
 
@@ -51,6 +52,7 @@ function App() {
        <Route exact path="/postyourarticle/drafts" component={Articleinfo} />
        <Route exact path="/postyourarticle/posted-articles" component={Postedarticle} />
        <Route exact path="/postyourarticle/article-by-other-admin" component={Articleadmin} />
+       <Route exact path ="/postyourarticle/article/:id" component={Article}/>
 
 
 

@@ -13,15 +13,23 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export default function Postpage() {
 
        const [name, setName] = useState("");
-       const [date, setDate] = useState("");
-       const [month,setMonth] = useState("");
        const [publishedBy, setPublishedBy] = useState("");
-       const [slug,setSlug] = useState("");
        const [discription, setdiscription] = useState("");
        const [cover, setCover] = useState("");
+       const [user, setUser] = useState("");
 
        const [isBusy, setIsBusy] = useState(false);
        const [routeRedirect, setRouteRedirect] = useState(false);
+       const [routeRedirectD, setRouteRedirectD] = useState(false);
+
+
+       var today = new Date();
+       var dd = String(today.getDate()).padStart(2,'0');
+       var mm = String(today.getMonth()+1).padStart(2,'0');
+       var yy = String(today.getFullYear());
+
+       today = mm + '/' + dd +'/' + yy;
+       
 
 
        const handleCkeditorState=(event,editor)=>{
@@ -45,7 +53,15 @@ export default function Postpage() {
 
     //    }
 
-       
+    useEffect(() => {
+        firebase.getUserState().then(user => {
+            if(user){
+                
+                console.log(user.email);
+                setUser(user.email);
+            }
+        });
+    });
            
        
 
@@ -55,10 +71,9 @@ export default function Postpage() {
 
            let article = {
                name,
-               date,
-               month,
+               
                publishedBy,
-               slug,
+               today,
                discription,
                cover: cover[0]
            }
@@ -81,19 +96,19 @@ export default function Postpage() {
 
         let article = {
             name,
-            date,
-            month,
+            
             publishedBy,
-            slug,
+            today,
             discription,
-            cover: cover[0]
+            cover: cover[0],
+            user,
         }
 
         await firebase.createPostatDraft(article).then(()=>{
             console.log("post created sucessfully");
             alert("Your Article has been saved on draft");
             setIsBusy(false);
-         setRouteRedirect(true);
+         setRouteRedirectD(true);
         }).catch(err =>{
          console.log(err);
          setIsBusy(false);
@@ -103,7 +118,10 @@ export default function Postpage() {
 
 
     if(routeRedirect){
-        return <Redirect to="/postyourarticle/article" />
+        return <Redirect to="/postyourarticle/posted-articles" />
+    }
+    if(routeRedirectD){
+        return <Redirect to="/postyourarticle/drafts" />
     }
 
 
@@ -118,11 +136,23 @@ export default function Postpage() {
        }else {
            createForm =(
             <form className="form-group" >
-               
+               <div className="row">
+                   
+                   <div className="position col-12">
+                    <h4>Fill up the form to Post Your Article</h4>
+                
+                   </div>
+               </div><br /><br />
 
             <div className="row">
-                <div className="col-12">
-                    <h3>Fill up the form to Post Your Article</h3>
+                
+                <div className="col-6">
+                    <label>Email:-</label>
+                    <input type="email" name="email"  value = {user} readonly />
+                </div>
+                <div className="col-6">
+                    <label>Date:-</label>
+                    <input type="text" name="todaydate"  value = {today} readonly />
                 </div>
                 <div className="col-12">
                     <label>Article Name:-</label>
@@ -134,20 +164,10 @@ export default function Postpage() {
                     <label>Published By:-</label>
                     <input type="text" name="publishedBy" placeholder="Publisher Name" onChange={(e) => setPublishedBy(e.target.value)} required />
                 </div>
-                <div className="col-4">
-                    <label> Date:-</label>
-                    <input type="number" name="date" placeholder="Eg:-03" onChange={(e) => setDate(e.target.value)} required />
-                </div>
-                <div className="col-4">
-                    <label>Month:-</label>
-                    <input type="text" name="month" placeholder="Eg:- Jun/Jul/Dec" onChange={(e) => setMonth(e.target.value)} required />
-                </div>
+                
             </div>
             <div className="row">
-                <div className="col-12">
-                    <label>Slug:-</label>
-                    <input type="text" name="slug" placeholder="Eg:- /atriclename/By:-PublishedBy" onChange={(e) => setSlug(e.target.value)} required />
-                </div>
+                
                 </div>
                 <div className="row">
                 <div className="col-12">
