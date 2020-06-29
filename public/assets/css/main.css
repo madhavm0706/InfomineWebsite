@@ -1,7 +1,10 @@
 /*Navigation*/
 .main_nav_cover {
+	background-color: #000;
+	opacity: 0.6;
 	
-	border-bottom: 3px solid;
+	z-index: 1000;
+	
 	height: 40px;
 	line-height: 40px;
 }
@@ -24,35 +27,46 @@
 .main_nav_cover #main-menu li a {
 	
 	
-    
+    color: #fff;
 	font-size: 16px;
 	padding: 0;
-	position: relative !important;
+	position: relative;
 	text-transform: uppercase;
+}
+
+.main_nav_cover #main-menu li a:hover {
+	position: relative;
+	
+	
+    color: #ca2017;
+	
 }
 .main_nav_cover #main-menu li ul.sub-menu a {
 	text-transform: none;
+	
 	color: white;
 }
 
 .main_nav_cover #main-menu li ul.sub-menu  li:hover {
 	text-transform: none;
 	background-color: #ca2017;
+	opacity: 1;
 }
 ul.sub-menu {
+	
 	display: none;
 	margin-left: 15px;
 
 }
 .main_nav_cover ul.sub-menu {
 	background-color: #000;
-	opacity: 0.6;
+	
 	border: medium none;
 	display: none;
 	position: absolute;
 	text-align: left;
 	top: 100%;
-	z-index: 100;
+	z-index: 9999;
 }
 .main_nav_cover .menu-item-has-children ul.sub-menu a::before {
 	content: none;
@@ -78,6 +92,7 @@ ul.sub-menu {
 }
 #sidebar-wrapper .menu-item-has-children ul.sub-menu a::before {
 	content: none;
+	
 }
 .main_nav_cover ul.sub-menu {
 	border-top: 0 none;
@@ -100,6 +115,7 @@ ul.sub-menu a::before {
 	content: none;
 }
 .smartnav {
+	
   background: #fff none repeat scroll 0 0 !important;
   border-radius: 0;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
@@ -107,6 +123,12 @@ ul.sub-menu a::before {
   text-align: center;
   z-index: 900;
 }
+
+
+
+
+
+
 /* calendar */
 .button1:hover{
 	cursor: pointer;

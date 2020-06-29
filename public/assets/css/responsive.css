@@ -16,6 +16,7 @@
 	.off-canvas-close {display: none;}
 	.main_nav_cover .menu-item-has-children a::before {
 		background: #000 none repeat scroll 0 0;
+		color: aliceblue;
 		content: "";
 		height: 4px;
 		position: absolute;

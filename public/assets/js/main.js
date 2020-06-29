@@ -21,7 +21,8 @@
                     items: 4
                 }
             }
-        });
+		});
+		
 		$('#slider-carousel').owlCarousel({
             loop: true,
             margin: 0,

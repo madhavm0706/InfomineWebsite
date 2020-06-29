@@ -113,6 +113,12 @@ var firebaseConfig = {
         const postdata = post.data();
         return postdata;
       }
+      
+      async getPostDraft(postid){
+        const post = await firebase.firestore().collection("drafts").doc(postid).get();
+        const postdata = post.data();
+        return postdata;
+      }
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       
 
@@ -162,29 +168,13 @@ async shareArticle(postid){
 
 async shareArticle1(postid){
     const post = await firebase.firestore().collection("drafts").doc(postid).get();
-    
-        return post;
-    
-  
-   
+    const firestorePost = await firebase.firestore().collection("share").add(post).catch(err =>{
+          console.log(err);
+          return err;
+      });
 
-    // let sharePost ={
-    //     name: postdata.name,
-    //     date: postdata.date,
-    //     month: postdata.month,
-    //     publishedBy: postdata.publishedBy,
-    //     slug: postdata.slug,
-    //     discription: postdata.discription,
-    //     cover: postdata.downloadurl,
-    //     fileRef: postdata.fileRef,
-    //     user: postdata.user
-    //   }
-
-    //   const firestorePost = await firebase.firestore().collection("share").add(sharePost).catch(err =>{
-    //       console.log(err);
-    //       return err;
-    //   });
-
+      return firestorePost;
+     
       
 }
 

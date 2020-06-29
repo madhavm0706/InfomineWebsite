@@ -7,7 +7,7 @@ export default function Footer() {
         <div class="container-fluid alith_footer_right_reserved">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-12 bottom-logo">
+                <div class="col-12  bottom-logo">
                   
                  <Footerheading />
                  <FooterContent />

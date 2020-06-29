@@ -15,6 +15,7 @@ import IncomeTax from './pages/IncomeTax';
 import IndianC from './pages/IndianC';
 import ArticlePage from './pages/ArticlePage';
 import TopHead from "./components/Tophead";
+import Navbar from './components/Navbar';
 import Head from "./components/Head";
 import Footer from './components/Footer';
 import Singlearticle from './pages/Singleaerticle';
@@ -24,6 +25,8 @@ import Articleinfo from './pages/Articleinfo';
 import Postedarticle from './pages/Postedarticle';
 import Articleadmin from './pages/Articleadmin';
 import Article from './pages/Article';
+import Delete from './pages/Delete';
+import Share from './pages/Share';
  
 import GotoTop from './components/GotoTop';
 
@@ -33,8 +36,9 @@ function App() {
   return (
     <>
     
-      <TopHead />
+      
       <Head/>
+      <Navbar />
     
      <Switch>
        <Route exact path="/" component={Home} />
@@ -53,6 +57,9 @@ function App() {
        <Route exact path="/postyourarticle/posted-articles" component={Postedarticle} />
        <Route exact path="/postyourarticle/article-by-other-admin" component={Articleadmin} />
        <Route exact path ="/postyourarticle/article/:id" component={Article}/>
+       <Route exact path ="/postyourarticle/drafts/:id" component={Delete}/>
+       <Route exact path ="/postyourarticle/drafts/share/:id" component={Share}/>
+
 
 
 
@@ -61,6 +68,7 @@ function App() {
        <Route component={Error} />
      </Switch>
      <Footer />
+     
      <GotoTop />
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
             

@@ -504,7 +504,7 @@ input:focus {
     .header-area .vizew-main-menu .classy-navbar {
       padding: 0;
       height: 90px; }
-      @media only screen and (min-width: 992px) and (max-width: 1199px) {
+      @media only screen and (min-width: 600px) and (max-width: 800px) {
         .header-area .vizew-main-menu .classy-navbar {
           height: 70px; } }
       @media only screen and (min-width: 768px) and (max-width: 991px) {

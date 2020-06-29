@@ -35,16 +35,7 @@ export default function Draftdata() {
 
     }
 
-    const shareArticleToAdmin =async (e)=>{
-        const postsArray = await firebase.shareArticle().then(() =>{
-            console.log("article shared sucessfully");
-            alert("Your article has been shared ");
-
-        }).catch(err =>{
-            console.log(err);
-        })
-       
-    }
+   
 
     
 
@@ -64,7 +55,7 @@ export default function Draftdata() {
         <div className="col-md-1 col-sm-12" >
             <p>S.No</p>
         </div>
-        <div className="col-md-4 col-sm-12" >
+        <div className="col-md-3 col-sm-12" >
             <p>Artcle Name</p>
         </div>
         <div className="col-md-2 col-sm-12" >
@@ -73,7 +64,7 @@ export default function Draftdata() {
         <div className="col-md-2 col-sm-12" >
             <p>Edit/Delete</p>
         </div>
-        <div className="col-md-1 col-sm-12" >
+        <div className="col-md-2 col-sm-12" >
             <p>D.O.P</p>
         </div>
         <div className="col-md-2 col-sm-12" >
@@ -94,20 +85,20 @@ export default function Draftdata() {
                    <div className="col-md-1 col-sm-12" >
                 <p>{i+1}</p>
                     </div>
-                    <div className="col-md-4 col-sm-12" >
+                    <div className="col-md-3 col-sm-12" >
                 <Link to={"article/" + post.id}><p>{post.data.name}</p></Link>
                     </div>
                     <div className="col-md-2 col-sm-12" >
                 <p>{post.data.publishedBy}</p>
                     </div>
                     <div className="col-md-2 col-sm-12" >
-                        <p><a className="edit">Edit</a> &nbsp;   <a className="delete">Delete</a></p>
+                        <p><a className="edit">Edit</a> &nbsp;   <Link to={"/postyourarticle/drafts/"+post.id} className="delete">Delete</Link></p>
                     </div>
-                    <div className="col-md-1 col-sm-12" >
+                    <div className="col-md-2 col-sm-12" >
                         <p>{post.data.date}{post.data.month}</p>
                     </div>
                     <div className="col-md-2 col-sm-12" >
-                        <button className="btn btn-primary" onClick={shareArticleToAdmin}>Share</button>
+                        <Link to={"/postyourarticle/drafts/share/"+post.id}><button className="btn btn-primary" >Share</button></Link>
                     </div>
                     
 
