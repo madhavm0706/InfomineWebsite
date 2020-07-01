@@ -7,7 +7,7 @@ export default function Subscribe() {
     const [email,setEmail] = useState("");
     const [emailexists,setEmailexits] = useState("");
 
-    console.log(email);
+    
 
     const subscribe = async (e) =>{
         e.preventDefault();
