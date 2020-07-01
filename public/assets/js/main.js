@@ -4,6 +4,7 @@
 	$(window).load(function(){
 		$('.spinner-cover').fadeOut('slow',function(){$(this).remove();});
 	});
+	
     var owlCarousel = function(){
         $('#slider-small').owlCarousel({
             loop: true,

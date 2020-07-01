@@ -70,6 +70,84 @@ a.link-active,
 .comment-reply-title {
 	font-family: 'Playfair Display', serif;
 }
+
+ /* Card styles */
+ 
+
+/* Card image loading */
+ 
+  
+
+
+ 
+
+/* Card description */
+.card__description { 
+	padding: 8px; 
+	font-size: 16px; 
+} 
+  
+.card__description.loading { 
+	height: 30px;
+	width: 100%;
+	border-radius: 3px; 
+} 
+.card__description.loading1 { 
+	height: 70px;
+	width: 70%;
+	margin-left: 10px;
+	border-radius: 3px; 
+} 
+.card__description.loading1 { 
+	height: 70px;
+	width: 50%;
+	margin-left: 10px;
+	border-radius: 3px; 
+}
+.card__description.loading2 { 
+	height: 30px;
+	width: 70%;
+	margin-left: 10px;
+	border-radius: 3px; 
+}
+.card__description.loading3 { 
+	height: 40px;
+	width: 50%;
+	margin-left: 10px;
+	border-radius: 3px; 
+}
+/* The loading Class */
+.loading, .loading1,.loading2,.loading3 { 
+	position: relative; 
+	background-color: #e2e2e2; 
+} 
+
+/* The moving element */
+.loading1::after,.loading2::after,.loading::after,.loading3::after { 
+	display: block; 
+	content: ""; 
+	position: absolute; 
+	width: 100%; 
+	height: 100%; 
+	transform: translateX(-100%); 
+	background: -webkit-gradient(linear, left top, 
+				right top, from(transparent),  
+				color-stop(rgba(255, 255, 255, 0.2)), 
+				to(transparent)); 
+				  
+	background: linear-gradient(90deg, transparent, 
+			rgba(255, 255, 255, 0.288), transparent); 
+
+	/* Adding animation */
+	animation: loading 0.8s infinite; 
+} 
+
+/* Loading Animation */
+@keyframes loading { 
+	100% { 
+		transform: translateX(100%); 
+	} 
+} 
 /*HEADER*/
 /*Topbar*/
 
@@ -285,7 +363,10 @@ a.link-active,
 }
 
 /* latest Article End */
-
+table, th, td {
+	border: 1px solid black;
+	height: auto;
+  }
 /* news section */
 
 .newsTitle{

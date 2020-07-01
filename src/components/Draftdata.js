@@ -7,7 +7,8 @@ import {Link} from 'react-router-dom';
 export default function Draftdata() {
 
     const [user,setUser] = React.useState("");
-    const [postid, setPostid] = React.useState("");   
+    const [postid, setPostid] = React.useState("");
+    const [isBusy,setIsBusy] =  React.useState(false);   
 
     useEffect(() => {
         firebase.getUserState().then(user => {
@@ -22,11 +23,13 @@ export default function Draftdata() {
     const {state,dispatch} = React.useContext(Draft);
 
     const getPostedArticlesondraft = async () =>{
+        setIsBusy(true);
 
         const postsArray = await firebase.getPostedArticlesonDraft(user ).catch(err =>{
             console.log(err);
             return err;
         });
+        setIsBusy(false);
 
         return dispatch({
             type: "FETCH_POSTS",
@@ -43,6 +46,7 @@ export default function Draftdata() {
         getPostedArticlesondraft();
     })
 
+   
    
 
 

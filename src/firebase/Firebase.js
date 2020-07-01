@@ -23,6 +23,68 @@ var firebaseConfig = {
           this.storage = firebase.storage();
       }
 
+      async logout(){
+        const logout = await firebase.auth().signOut().catch(err => {
+            console.log(err);
+            return err;
+        });
+        return logout;
+    }
+
+    async newsandupdate(post){
+        let news = {
+             url: post.url,
+             date: post.today,
+             news: post.newsorupdate
+        }
+
+        const newsdata = await firebase.firestore().collection("newsandupdate").add(news).catch(err =>{
+            console.log(err);
+            return err;
+        });
+
+        return newsdata;
+    }
+
+
+    async getnews(){
+        const newsarray = [];
+        const news = await firebase.firestore().collection("newsandupdate").get();
+
+        news.forEach(doc =>{
+
+            newsarray.push({id:doc.id,data:doc.data()});
+
+        });
+
+        return newsarray;
+    }
+
+    async emailfinder(email){
+        
+
+        const emailalreadyregistered = await firebase.firestore().collection("subscriber").where("emailid","==",email).get();
+         
+        return emailalreadyregistered;
+
+
+    }
+
+    async subscriber(email){
+
+        let emailofsuscriber ={
+            emailid: email.email,
+        }
+ 
+
+        const emails = await firebase.firestore().collection("subscriber").add(emailofsuscriber).catch(err =>{
+            console.log(err);
+            return err;
+        });
+
+        return emails;
+    }
+
       async createPost(post){
           const storageRef = firebase.storage().ref();
           const storageChild = storageRef.child(post.cover.name);
@@ -95,6 +157,15 @@ var firebaseConfig = {
     async getPostedArticlesonDraft(userid){
         let postsArray = [];
         const posts = await firebase.firestore().collection("drafts").where("user","==",userid).get();
+        posts.forEach(doc =>{
+            postsArray.push({id:doc.id,data:doc.data()})
+        });
+
+        return postsArray;
+    }
+    async getPostedArticlesonDraftid(userid){
+        let postsArray = [];
+        const posts = await firebase.firestore().collection("drafts").where("id","==",userid).get();
         posts.forEach(doc =>{
             postsArray.push({id:doc.id,data:doc.data()})
         });
@@ -179,6 +250,27 @@ async shareArticle1(postid){
 }
 
 // !!!!!!!!!!!
+// fetch Query form
+
+async Query(){
+    const queryarry = [];
+    const query = await firebase.firestore().collection("contactFormDetails").get();
+    query.forEach(doc =>{
+        queryarry.push({id: doc.id,data: doc.data()});
+    });
+    return queryarry;
+}
+
+// !!!!!!!!!!!!!!!!
+
+// get user state
+async getUserState(){
+    return new Promise(resolve =>{
+        this.auth.onAuthStateChanged(resolve);
+    });
+}
+
+// !!!!!!!!!!!!!
 
   }
 

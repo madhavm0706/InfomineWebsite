@@ -1,5 +1,6 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import './App.css';
+import firebase from './firebase/Firebase';
 
 
 import image from './images/infomine.jpg';
@@ -27,12 +28,24 @@ import Articleadmin from './pages/Articleadmin';
 import Article from './pages/Article';
 import Delete from './pages/Delete';
 import Share from './pages/Share';
+import Query from './pages/Query';
+import NewsandUpdate from './pages/NewsandUpdate';
  
 import GotoTop from './components/GotoTop';
 
 import {Switch, Route} from 'react-router-dom';
 
 function App() {
+
+  const [usersite,setUsersite] = useState(false);
+
+  
+
+
+
+
+
+
   return (
     <>
     
@@ -41,6 +54,20 @@ function App() {
       <Navbar />
     
      <Switch>
+      
+
+<Route exact path="/postyourarticle/login" component={Login} />
+<Route exact path="/postyourarticle/drafts" component={Articleinfo} />
+<Route exact path="/postyourarticle/posted-articles" component={Postedarticle} />
+<Route exact path="/postyourarticle/article-by-other-admin" component={Articleadmin} />
+<Route exact path ="/postyourarticle/article/:id" component={Article}/>
+<Route exact path ="/postyourarticle/drafts/:id" component={Delete}/>
+<Route exact path ="/postyourarticle/drafts/share/:id" component={Share}/>
+<Route exact path ="/postyourarticle/query" component={Query}/>
+
+
+      
+       
        <Route exact path="/" component={Home} />
        <Route exact path="/other" component={Other} />
        <Route exact path="/contact-us" component={ContactUs} />
@@ -53,12 +80,11 @@ function App() {
        <Route exact path="/single-article-page/:slug" component={Singlearticle} />
        <Route exact path="/postyourarticle/article" component={Postpage} />
        <Route exact path="/postyourarticle/login" component={Login} />
-       <Route exact path="/postyourarticle/drafts" component={Articleinfo} />
-       <Route exact path="/postyourarticle/posted-articles" component={Postedarticle} />
-       <Route exact path="/postyourarticle/article-by-other-admin" component={Articleadmin} />
-       <Route exact path ="/postyourarticle/article/:id" component={Article}/>
-       <Route exact path ="/postyourarticle/drafts/:id" component={Delete}/>
-       <Route exact path ="/postyourarticle/drafts/share/:id" component={Share}/>
+       <Route exact path="/postyourarticle/article" component={Postpage} />
+       <Route exact path="/postyourarticle/news-and-update" component={NewsandUpdate} />
+
+
+       
 
 
 
