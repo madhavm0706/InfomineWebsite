@@ -1,21 +1,65 @@
 import React from 'react';  
+import Carousel from 'react-bootstrap/Carousel' 
+
 export default function ImageSlider() {
     return (
      
 
 
 <div className="slider" id="slider1">
+    <Carousel>
+        <Carousel.Item style={{'height':"500px"}} >  
+            <img alt="Slider"  
+              
+                src={"https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/1200_bodie-11.jpg"}  />  
+            <Carousel.Caption>  
+                <h3>1</h3>  
+            </Carousel.Caption>  
+        </Carousel.Item  >
+        
+        <Carousel.Item style={{'height':"500px"}} >  
+            <img alt="Slider"  
+                className="d-block w-100"  
+                src={"https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/jungle.jpg"}  />  
+            <Carousel.Caption>  
+                <h3>2</h3>  
+            </Carousel.Caption>  
+        </Carousel.Item  >
+
+        <Carousel.Item style={{'height':"500px"}} >  
+            <img alt="Slider"  
+                className="d-block w-100"  
+                src={"https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/1200_bodie-11.jpg"}  />  
+            <Carousel.Caption>  
+                <h3>3</h3>  
+            </Carousel.Caption>  
+        </Carousel.Item  >
+
+        <Carousel.Item style={{'height':"500px"}} >  
+            <img alt="Slider"  
+                className="d-block w-100"  
+                src={"https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/1200_bodie-11.jpg"}  />  
+            <Carousel.Caption>  
+                <h3>4</h3>  
+            </Carousel.Caption>  
+        </Carousel.Item  >
+        <Carousel.Item style={{'height':"500px"}} >  
+            <img alt="Slider"  
+                className="d-block w-100"  
+                src={"https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/1200_bodie-11.jpg"}  />  
+            <Carousel.Caption>  
+                <h3>5</h3>  
+            </Carousel.Caption>  
+        </Carousel.Item  >
+
+    </Carousel>
    
-   <div style={{backgroundImage:"url("+"https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/1200_bodie-11.jpg"+")"}}></div>
+   {/* <div style={{backgroundImage:"url("+"https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/1200_bodie-11.jpg"+")"}}></div>
    <div style={{backgroundImage:"url("+"(https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/jungle.jpg"+")"}}></div>
    <div style={{backgroundImage:"url("+"https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/1200_bodie-11.jpg"+")"}}></div>
    <div style={{backgroundImage:"url("+"https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/1200_bodie-11.jpg"+")"}}></div>
-   <div style={{backgroundImage:"url("+"https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/1200_bodie-11.jpg"+")"}}></div>
+   <div style={{backgroundImage:"url("+"https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/1200_bodie-11.jpg"+")"}}></div> */}
 
-   
-   <span className="titleBar">
-       <h1>This Slider has all default settings.</h1>
-   </span>
    
 </div>
 
@@ -26,3 +70,4 @@ export default function ImageSlider() {
   
     )
 }
+
