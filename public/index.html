@@ -69,10 +69,21 @@
 
      
     <!-- preloader -->
-    <div class="loader_bg">
-      <div class="loader"></div>
+    <div class="loader">
+     
+        <img src="loading-arrow.gif" alt="Loading..." >&nbsp;
+      
+      
+      
     </div>
 
+
+    <script>
+      window.addEventListener("load", function () {
+    const loader = document.querySelector(".loader");
+    loader.className += " hidden"; // class "loader hidden"
+});
+    </script>
   
 <!-- preloader end -->
 

@@ -254,6 +254,10 @@ a.link-active,
     transition: transform .4s;
 }
 
+.sliderimg{
+	height: 500px;
+}
+
 
 .titleBar {
     z-index: 2;
