@@ -9,33 +9,14 @@ export default function Subscribe() {
 
     
 
-    const subscribe = async (e) =>{
-        e.preventDefault();
-                
-        
-
-       const sameemail =  await firebase.emailfinder(email);
-       console.log(sameemail);
-
-    //    if(sameemail == email){
-    //        alert("email already exists");
-    //    }else{
-    //       emailadder();
-    //    }
-
-        
-        
-
-        
-
-
-    }
+    
 
     const emailadder = async ()=>{
 
         let emailofsubscriber={
             emailid: email,
         }
+        
 
         await firebase.subscriber(emailofsubscriber).then(() =>{
             console.log("subscribed");
@@ -55,7 +36,7 @@ export default function Subscribe() {
                      <h5>Subscribe to get latest announcement via E-Mail</h5>
                      <form>
                      <input type="email" placeholder="Enter Your Email-Id" onChange={(e) =>{setEmail(e.target.value)}} required /><br></br><br></br>
-                     <input className="btn btn-primary" type="submit" value="SUBSCRIBE" onClick={subscribe} />
+                     <input className="btn btn-primary" type="submit" value="SUBSCRIBE" onClick={emailadder} />
                      </form>
              </div>
              </div>

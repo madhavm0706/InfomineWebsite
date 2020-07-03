@@ -65,8 +65,8 @@ export default function Postpage() {
            
        
 
-       const addArticle = async (e) =>{
-           e.preventDefault();
+       const addArticle = async () =>{
+          
            setIsBusy(true);
 
            let article = {
@@ -80,7 +80,8 @@ export default function Postpage() {
 
            await firebase.createPost(article).then(()=>{
                console.log("post created sucessfully");
-               alert("Your Article has been Posted");
+               alert("Your Article has been posted sucessfully");
+               
                setIsBusy(false);
             setRouteRedirect(true);
            }).catch(err =>{
@@ -90,8 +91,44 @@ export default function Postpage() {
 
        }
 
-       const addArticledraft = async (e) =>{
-        e.preventDefault();
+       const confirmmessage = () =>{
+
+        
+       var r = window.confirm("Do You want to Post the Article");
+           if (r == true) {
+
+            addArticle();
+
+            
+               
+             } else {
+             addArticledraft();
+                 }
+             
+
+       }
+       const confirmmessage1 = () =>{
+
+        
+        var r = window.confirm("Do You want to Save the Article at Draft  ");
+            if (r == true) {
+ 
+             addArticledraft();
+ 
+             
+                
+              } else {
+
+                alert("sorry");
+              
+                  }
+              
+ 
+        }
+       
+
+       const addArticledraft = async () =>{
+       
         setIsBusy(true);
 
         let article = {
@@ -105,7 +142,7 @@ export default function Postpage() {
         }
 
         await firebase.createPostatDraft(article).then(()=>{
-            console.log("post created sucessfully");
+            console.log("post saved at draft");
             alert("Your Article has been saved on draft");
             setIsBusy(false);
          setRouteRedirectD(true);
@@ -129,8 +166,13 @@ export default function Postpage() {
        if(isBusy){
            createForm = (
                <div>
-                   <p>Request is being proceed</p>
-                   <img style={{width:"5",height:"5"}}  src={loading}></img>
+                   <br /><br />
+
+                   
+                   <div className="loader">
+                   <p align="center">Request is being proceed</p>
+                   <img src={loading}></img>
+                   </div>
                </div>
            )
        }else {
@@ -194,10 +236,10 @@ export default function Postpage() {
 
             <div className="row">
                 <div class="col-md-3 col-sm-12">
-                <input type="submit" value="Post Your Article" className="btn btn-primary" onClick={addArticle} />
+                <input type="submit" value="Post Your Article" className="btn btn-primary" onClick={confirmmessage} />
                 </div>&nbsp;
                 <div class="col-md-3 col-sm-12">
-                <input type="submit" value="Save On Draft" className="btn btn-primary" onClick={addArticledraft}/>
+                <input type="submit" value="Save On Draft" className="btn btn-primary" onClick={confirmmessage1}/>
                 </div>
 
             </div>
@@ -239,8 +281,13 @@ export default function Postpage() {
 
                 <div className="row">
                     <Articlesidebar />
-                    
+
+                    <div className="col-md-9 col-sm-12">
                     {createForm}
+
+                    </div>
+                    
+                    
                     
                     </div>
 

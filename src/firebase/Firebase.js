@@ -73,7 +73,7 @@ var firebaseConfig = {
     async subscriber(email){
 
         let emailofsuscriber ={
-            emailid: email.email,
+            emailid: email.emaili,
         }
  
 
