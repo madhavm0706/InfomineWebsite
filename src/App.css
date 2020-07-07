@@ -77,7 +77,35 @@ a.link-active,
 /* Card image loading */
  
   
+/* single page article */
+.borderbox .logo{
+	width: 100px;
+	height: 100px;
+}
+.borderbox{
+	margin-top: 20px;
+    border: 2px solid black;
+    width: 100%;
+    height: auto;
+}
 
+.borderbox .heading,.writer,.logo{
+    padding-top: 20px;
+    font-style: italic;
+}
+
+.borderbox hr{
+    width: 100%;
+    color: black;
+    border: 1px solid;
+}
+
+.contentbox{
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+/* single page article ends */
 
  
 

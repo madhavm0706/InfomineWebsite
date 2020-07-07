@@ -2,7 +2,8 @@ import React,{useEffect,useRef,useState} from 'react';
 import {Redirect} from 'react-router-dom';
 
 import firebase from '../firebase/Firebase';
-
+import ReactHtmlParser from 'react-html-parser';
+import img from '../images/infomine.jpg';
 
 export default function Article(props) {
 
@@ -57,11 +58,31 @@ export default function Article(props) {
     }else{
         currentPost=(
             <>
-            <h2>{post.name}</h2>
-            <p>{post.discription}</p>
-            <p>{post.date}</p>
-            <p>{post.publishedBy}</p>
             
+                <div className="borderbox container">
+
+                   <div className="row">
+                       <div className="col-2">
+                     <img className="logo" src={img}  /> 
+
+                        </div>
+
+                        <div class="col-10">
+        <h4 class="heading" align="right">{post.name}</h4>
+        <h5 class="writer" align="right">{post.publishedBy}</h5><hr />
+
+                 </div>
+
+                 </div>
+        <div class="contentbox">
+           {ReactHtmlParser(post.discription)}
+
+        </div>
+
+                   
+                
+                 </div>
+
             </>
         )
     }
