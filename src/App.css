@@ -1250,3 +1250,22 @@ img {
 .js .animate-box {
 	opacity: 0
 }
+
+.error-size{
+	max-width: 60%;
+	margin: auto;
+}
+
+.error-size .jumbotron{
+	background-color: #ecdcdc;
+	border-style: solid;
+	border-color: rgb(29, 27, 27);
+	box-shadow: 10px 10px rgb(78, 76, 77);
+}
+
+.error-size h1{
+	text-align: center;
+	text-shadow: rgba(10, 10, 10, 0.2);
+}
+
+
