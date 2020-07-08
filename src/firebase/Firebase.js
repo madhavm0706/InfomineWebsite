@@ -70,19 +70,38 @@ var firebaseConfig = {
 
     }
 
-    async subscriber(email){
+    async subscriber(emailid){
 
         let emailofsuscriber ={
-            emailid: email.emaili,
+            emailIdOfUser: emailid.email,
+            date: emailid.today,
         }
  
 
         const emails = await firebase.firestore().collection("subscriber").add(emailofsuscriber).catch(err =>{
             console.log(err);
-            return err;
+            return err;       
+            
+     
         });
 
         return emails;
+    }
+
+    async getSubscrier(){
+        const subscriber=[];
+        const subs = await firebase.firestore().collection("subscriber").get().catch(err =>{
+            console.log(err);
+            return err;
+        });
+        subs.forEach(doc =>{
+
+            subscriber.push({id:doc.id,data:doc.data()});
+
+        });
+
+        return subscriber;
+
     }
 
       async createPost(post){
@@ -144,6 +163,15 @@ var firebaseConfig = {
     async getPostedArticles(){
         let postsArray = [];
         const posts = await firebase.firestore().collection("articles").get();
+        posts.forEach(doc =>{
+            postsArray.push({id:doc.id,data:doc.data()})
+        });
+
+        return postsArray;
+    }
+    async getPostedArticlesbyAdmins(){
+        let postsArray = [];
+        const posts = await firebase.firestore().collection("share").get();
         posts.forEach(doc =>{
             postsArray.push({id:doc.id,data:doc.data()})
         });

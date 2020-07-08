@@ -61,6 +61,10 @@ export default function Articlesidebar(props) {
                     <Link to="/postyourarticle/drafts"><p>Article on Drafts</p></Link>
                     <Link to="/postyourarticle/article-by-other-admin"> <p>Articles By other Admin</p></Link>
                     <Link to="/postyourarticle/news-and-update"> <p>News & Updates</p></Link>
+                    <Link to="/postyourarticle/query"> <p>Query</p></Link>
+                    <Link to="/postyourarticle/subscriber"> <p>Subscriber</p></Link>
+
+
 
                     <Link onClick={logout}><p>Sign Out</p></Link>
 

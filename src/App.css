@@ -544,13 +544,16 @@ ul.sub-menu a::before {
 
 /* Navbar */
 
-.slider, 
+.slider{
+	margin-top: 50px;
+}
 .slider > div {
     /* Images default to Center Center. Maybe try 'center top'? */
     background-position: center center;
     display: block;
     width: 100%;
-    height: 500px;
+	height: 500px;
+    
     
     position: relative;
     background-size: cover;

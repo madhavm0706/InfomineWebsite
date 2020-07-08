@@ -40,21 +40,19 @@ export default function Posteddata() {
 
     if(isBusy){
         content =(
-                <div className="col-md-9 col-sm-12">
+            <div className="row latestcard">
+            <div className=" col-12">
                 
-                <div className="row styling"> 
-                <div className="col-md-12">
-                    
+                <div className="card__description loading3"></div><br />
+                <div className="card__description loading2"></div><br />
+    
+    
+                
+                
+                
+            </div>
             
-                <div className="card__description loading"></div><br />
-                <div className="card__description loading"></div><br />
-                <div className="card__description loading"></div><br />
-                <div className="card__description loading"></div><br />
-                <div className="card__description loading"></div><br />
-                <div className="card__description loading"></div> <br />
-                </div>
-                </div>
-                </div>
+            </div>
         )
 
     }else{

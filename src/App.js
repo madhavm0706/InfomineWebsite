@@ -30,6 +30,7 @@ import Delete from './pages/Delete';
 import Share from './pages/Share';
 import Query from './pages/Query';
 import NewsandUpdate from './pages/NewsandUpdate';
+import Subscriber from './pages/Subscriber';
  
 import GotoTop from './components/GotoTop';
 
@@ -82,6 +83,7 @@ function App() {
        <Route exact path="/postyourarticle/login" component={Login} />
        <Route exact path="/postyourarticle/article" component={Postpage} />
        <Route exact path="/postyourarticle/news-and-update" component={NewsandUpdate} />
+       <Route exact path="/postyourarticle/subscriber" component={Subscriber} />
 
 
        

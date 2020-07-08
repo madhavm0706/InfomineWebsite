@@ -10,8 +10,10 @@ import {ArticleProvider} from './Context';
 import {ArticlesProvider} from './context/Articlecontext';
 import {AuthProvider} from './context/authContext';
 import {DraftsProvider} from './context/Draftcontext';
+import {AdminArticlesProvider} from './context/Adminarticles';
 
 ReactDOM.render(
+  <AdminArticlesProvider>
   <DraftsProvider>
   <AuthProvider>
   <ArticleProvider>
@@ -23,6 +25,7 @@ ReactDOM.render(
   </ArticleProvider>
   </AuthProvider>
   </DraftsProvider>
+  </AdminArticlesProvider>
   ,
   document.getElementById('root')
 );

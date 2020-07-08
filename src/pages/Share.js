@@ -1,6 +1,8 @@
 import React,{useEffect,useState} from 'react';
 import firebase from '../firebase/Firebase';
+import { MdError } from "react-icons/md";
 
+import loading from '../images/loading-arrow.gif';
 
 export default function Share(props) {
 
@@ -8,6 +10,8 @@ export default function Share(props) {
     const [post,setpost] = useState([]);
     const [route,setRedirect] = useState(false);
     const [fetchsharea,setFetchsharea] = useState(false);
+    const [isbusy,setIsbusy] = useState(false);
+    const [isbusyshare,setIsbusyshare] = useState(false);
 
     
 
@@ -29,7 +33,7 @@ export default function Share(props) {
        
     }
     const sharearticle = async () =>{
-
+         setIsbusyshare(true);
         let newPost ={
             id: postid,
             name: post.name,
@@ -54,10 +58,14 @@ export default function Share(props) {
             return err;
         })
 
+        setIsbusyshare(false);
+
     }
     
 
     const fetch = async (postid)=>{
+        setIsbusy(true);
+        
         const article = await firebase.fetchshareArticle(postid).catch(err =>{
             console.log(err);
             return err;
@@ -65,30 +73,85 @@ export default function Share(props) {
         
         if(article == null){
             setFetchsharea(false)
+            
         }else{
             setFetchsharea(true);
 
         }
+
+        setIsbusy(false);
         
         
+    }
+    let share;
+    if(setIsbusyshare){
+       share =(
+            <div>
+                   <br /><br />
+
+                   
+                   <div className="loader">
+                   <p align="center">Request is being proceed</p>
+                   <img src={loading}></img>
+                   </div>
+               </div>
+        )
     }
     
     
     let button;
+
+    if(isbusy){
+        button =(
+            <>
+            <br /><br />
+            <div className="container">
+            <div className="row latestcard">
+               
+        <div className=" col-12">
+            
+            <div className="card__description loading1"></div><br />
+            <div className="card__description loading2"></div><br />
+            </div>
+
+            
+            
+            
+        </div>
+        
+        </div>
+        </>
+        )
+    }else{
     if(fetchsharea){
         button =(
-            <button  className="btn btn-primary">Already shared</button>  
+            <div className="error-size">
+            <br/>
+        <div className="jumbotron">
+                <h1><MdError /> You have already shared this Article <MdError/></h1>
+                
+        </div>
+        </div>
+  
 
         )
         
     }else{
         button =(
-            <button  className="btn btn-primary" onClick={sharearticle}>Share it</button>  
+            <div className="error-size">
+            <br/>
+        <div className="jumbotron">
+                <h1><MdError /> Share this Article to other admins also <MdError/></h1>
+                <br />
+                <button style={{marginLeft:"45%"}} className="btn btn-primary" onClick={sharearticle} >Share </button>  
+      
+        </div>
+        </div>
 
         )
     }
     
-
+    }
     
 
     useEffect(() =>{
@@ -102,7 +165,7 @@ export default function Share(props) {
 
     return (
         <div>
-          Do you want to share?
+          
           {button}
         </div>
     )

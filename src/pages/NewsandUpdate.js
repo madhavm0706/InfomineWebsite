@@ -1,5 +1,8 @@
 import React,{useState} from 'react';
 import loading from '../images/loading-arrow.gif';
+import Articlesidebar from '../components/Articlesidebar'; 
+import Coloredline from '../components/Colerdline';
+
 
 import firebase from '../firebase/Firebase';
 
@@ -97,14 +100,31 @@ export default function NewsandUpdate() {
     }
     
     return (
-        <div className="container">
+        <div className="container"><br />
 
-         <h3 style={{textAlign:"center"}}>News & Update</h3><br /><br />
+        <h3 align="center">News And Updates</h3><Coloredline color="black" /> <br />
 
-        
-             {createform}
 
-         </div>
+
+        <div className="form-group">
+            
+
+        <div className="row">
+            <Articlesidebar />
+
+            <div className="col-md-9 col-sm-12">
+            {createform}
+
+            </div>
+            
+            
+            
+            </div>
+
+        </div>
+        <Coloredline color="black" />
+
+        </div> 
             
         
     )
