@@ -848,6 +848,10 @@ img {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
   }
+  .no-expand {
+	box-sizing: border-box;
+	width: 0px;
+	min-width: 100%;}
 
   #more{
       display: none;
