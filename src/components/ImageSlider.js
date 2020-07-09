@@ -54,13 +54,6 @@ export default function ImageSlider() {
 
     </Carousel>
    
-   {/* <div style={{backgroundImage:"url("+"https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/1200_bodie-11.jpg"+")"}}></div>
-   <div style={{backgroundImage:"url("+"(https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/jungle.jpg"+")"}}></div>
-   <div style={{backgroundImage:"url("+"https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/1200_bodie-11.jpg"+")"}}></div>
-   <div style={{backgroundImage:"url("+"https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/1200_bodie-11.jpg"+")"}}></div>
-   <div style={{backgroundImage:"url("+"https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/1200_bodie-11.jpg"+")"}}></div> */}
-
-   
 </div>
 
 
