@@ -101,8 +101,8 @@ export default function Postpage() {
 
             
                
-             } else {
-             addArticledraft();
+             } else  {
+                return <Redirect to="/postyourarticle/article" />
                  }
              
 
@@ -119,8 +119,8 @@ export default function Postpage() {
                 
               } else {
 
-                alert("sorry");
-              
+                return <Redirect to="/postyourarticle/article" />
+
                   }
               
  
@@ -177,7 +177,7 @@ export default function Postpage() {
            )
        }else {
            createForm =(
-            <form className="form-group" >
+            <form className="form-group"  >
                <div className="row">
                    
                    <div className="position col-12">

@@ -3,6 +3,7 @@ import firebase from '../firebase/Firebase';
 import { MdError } from "react-icons/md";
 
 import loading from '../images/loading-arrow.gif';
+import { Redirect } from 'react-router-dom';
 
 export default function Share(props) {
 
@@ -83,20 +84,8 @@ export default function Share(props) {
         
         
     }
-    let share;
-    if(setIsbusyshare){
-       share =(
-            <div>
-                   <br /><br />
-
-                   
-                   <div className="loader">
-                   <p align="center">Request is being proceed</p>
-                   <img src={loading}></img>
-                   </div>
-               </div>
-        )
-    }
+    
+    
     
     
     let button;

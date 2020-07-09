@@ -1,6 +1,7 @@
 import React from 'react'
 import { MdError } from "react-icons/md";
 
+
 export default function Error() {
     return (
         <>

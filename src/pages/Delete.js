@@ -2,11 +2,19 @@ import React,{useState,useEffect} from 'react';
 import {Redirect} from 'react-router-dom';
 
 import firebase from '../firebase/Firebase';
+import { MdError } from "react-icons/md";
+
+import loading from '../images/loading-arrow.gif';
+
+
 
 export default function Delete(props) {
     const [post,setPost] = useState("");
     const [postid,setPostId] = useState("");
     const [route,setRedirect] = useState(false);
+    const [isbusyshare,setIsbusyshare] = useState(false);
+
+
 
      const getPost = async (postid) =>{
          const _posts = await firebase.getPostDraft(postid).catch(err =>{
@@ -26,6 +34,10 @@ export default function Delete(props) {
      },[props.match.params.id]);
 
      const deletethearticle =  () =>{
+
+        setRedirect(true);
+         
+         
          firebase.deleteArticle(postid, post.fileRef).then(() =>{
 
              setRedirect(true);
@@ -33,20 +45,43 @@ export default function Delete(props) {
              console.log(err);
              return err;
          });
+         setRedirect(false);
+        
 
      }
-
+     let share;
      if(route){
+        share =(
+            <div>
+                   <br /><br />
+
+                   
+                   <div className="loader">
+                   <p align="center">Request is being proceed</p>
+                   <img src={loading}></img>
+                   </div>
+               </div>
+        )
          return <Redirect to="/postyourarticle/drafts" />
      }
      
-
+     
+ 
      
 
     return (
         <div>
-            Do You want to delete this article?
-            <button onClick={deletethearticle} className="btn btn-primary">Yes</button>
+          
+          {share}
+          <div className="error-size">
+            <br/>
+        <div className="jumbotron">
+                <h1><MdError /> Do You want to Delete this article <MdError/></h1>
+                <br />
+                <button style={{marginLeft:"45%"}} className="btn btn-primary" onClick={deletethearticle} >Delete </button>  
+      
+        </div>
+        </div>
         </div>
     )
 }
