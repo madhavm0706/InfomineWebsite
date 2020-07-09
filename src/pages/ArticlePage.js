@@ -19,10 +19,12 @@ export default class ArticlePage extends Component {
 
     return (
         <div class="container">
+          <div style={{marginTop: 100}}>
               <div class="row">
                  
                   {data}
                  
+              </div>
               </div>
         </div>        
     )
