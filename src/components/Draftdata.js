@@ -96,7 +96,7 @@ export default function Draftdata() {
                 <p>{post.data.publishedBy}</p>
                     </div>
                     <div className="col-md-2 col-sm-12" >
-                        <p><a className="edit">Edit</a> &nbsp;   <Link to={"/postyourarticle/drafts/"+post.id} className="delete">Delete</Link></p>
+                        <p><Link to={"/postyourarticle/drafts/edit/"+post.id} className="edit">Edit</Link>&nbsp;   <Link to={"/postyourarticle/drafts/"+post.id} className="delete">Delete</Link></p>
                     </div>
                     <div className="col-md-2 col-sm-12" >
                         <p>{post.data.date}{post.data.month}</p>

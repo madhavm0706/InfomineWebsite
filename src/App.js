@@ -32,6 +32,7 @@ import Query from './pages/Query';
 import NewsandUpdate from './pages/NewsandUpdate';
 import Subscriber from './pages/Subscriber';
 import ArticleDraft from './pages/ArticleDraft';
+import Edit from './pages/Edit';
  
 import GotoTop from './components/GotoTop';
 
@@ -79,6 +80,7 @@ function App() {
           <Route exact path="/postyourarticle/article" component={Postpage} />
           <Route exact path="/postyourarticle/news-and-update" component={NewsandUpdate} />
           <Route exact path="/postyourarticle/subscriber" component={Subscriber} />
+          <Route exact path ="/postyourarticle/drafts/edit/:id" component={Edit}/>
 
 
 

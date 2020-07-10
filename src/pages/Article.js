@@ -61,7 +61,7 @@ export default function Article(props) {
             <img src={loading}></img>
             </div>
         </div>
-        )
+        )   
     }else{
         currentPost=(
             <>

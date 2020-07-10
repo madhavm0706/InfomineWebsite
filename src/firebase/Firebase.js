@@ -254,6 +254,55 @@ var firebaseConfig = {
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
+// update article
+
+async updateArticle(postid, postdata){
+    if(postdata["cover"]){
+
+        const storageRef = firebase.storage().ref();
+        const storageChild = storageRef.child(postdata.cover.name);
+        const postcover = await storageChild.put(postdata.cover);
+        const downloadurl = await storageChild.getDownloadURL();
+        const fileRef = postcover.ref.location.path;
+
+        await storageRef.child(postdata["oldcover"]).delete().catch(err =>{
+            console.log(err);
+            return err;
+        });
+
+        let updatepost ={
+            name: postdata.name,
+            user: postdata.user,
+            publishedBy: postdata.publishedBy,
+            date: postdata.date,
+            discription: postdata.discription,
+            cover: downloadurl,
+            fileRef: fileRef
+        }
+
+        const post = await firebase.firestore().collection("drafts").doc(postid).set(updatepost,{merge : true}).catch(err =>{
+            console.log(err);
+            return err;
+        });
+
+        return post;
+
+    }else{
+        const post = await firebase.firestore().collection("drafts").doc(postid).set(postdata,{merge : true}).catch(err =>{
+            console.log(err);
+            return err;
+        });
+        return post;
+    }
+
+    }
+
+
+
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 // share an Article
 
 async shareArticle(post){
