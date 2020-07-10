@@ -90,7 +90,7 @@ export default function Draftdata() {
                 <p>{i+1}</p>
                     </div>
                     <div className="col-md-3 col-sm-12" >
-                <Link to={"article/" + post.id}><p>{post.data.name}</p></Link>
+                <Link to={"/postyourarticle/articleondraft/" + post.id}><p style={{fontStyle:"italic",color:"red"}}>{post.data.name}</p></Link>
                     </div>
                     <div className="col-md-2 col-sm-12" >
                 <p>{post.data.publishedBy}</p>

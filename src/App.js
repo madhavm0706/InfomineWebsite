@@ -31,6 +31,7 @@ import Share from './pages/Share';
 import Query from './pages/Query';
 import NewsandUpdate from './pages/NewsandUpdate';
 import Subscriber from './pages/Subscriber';
+import ArticleDraft from './pages/ArticleDraft';
  
 import GotoTop from './components/GotoTop';
 
@@ -40,7 +41,16 @@ function App() {
 
   const [usersite,setUsersite] = useState(false);
 
-  
+  useEffect(() => {
+    firebase.getUserState().then(user => {
+        if(user){
+            
+            
+            setUsersite(true);
+        }
+    });
+});
+
 
 
 
@@ -55,17 +65,27 @@ function App() {
       <Navbar />
     
      <Switch>
+
+     <Route exact path="/postyourarticle/drafts" component={Articleinfo} />
+          <Route exact path="/postyourarticle/posted-articles" component={Postedarticle} />
+          <Route exact path="/postyourarticle/article-by-other-admin" component={Articleadmin} />
+          <Route exact path ="/postyourarticle/articleondraft/:id" component={ArticleDraft}/>
+
+          <Route exact path ="/postyourarticle/article/:id" component={Article}/>
+          <Route exact path ="/postyourarticle/drafts/:id" component={Delete}/>
+          <Route exact path ="/postyourarticle/drafts/share/:id" component={Share}/>
+          <Route exact path ="/postyourarticle/query" component={Query}/>
+          <Route exact path="/postyourarticle/article" component={Postpage} />
+          <Route exact path="/postyourarticle/article" component={Postpage} />
+          <Route exact path="/postyourarticle/news-and-update" component={NewsandUpdate} />
+          <Route exact path="/postyourarticle/subscriber" component={Subscriber} />
+
+
+
+       
       
 
-<Route exact path="/postyourarticle/login" component={Login} />
-<Route exact path="/postyourarticle/drafts" component={Articleinfo} />
-<Route exact path="/postyourarticle/posted-articles" component={Postedarticle} />
-<Route exact path="/postyourarticle/article-by-other-admin" component={Articleadmin} />
-<Route exact path ="/postyourarticle/article/:id" component={Article}/>
-<Route exact path ="/postyourarticle/drafts/:id" component={Delete}/>
-<Route exact path ="/postyourarticle/drafts/share/:id" component={Share}/>
-<Route exact path ="/postyourarticle/query" component={Query}/>
-
+       <Route exact path="/postyourarticle/login" component={Login} />
 
       
        
@@ -79,11 +99,6 @@ function App() {
        <Route exact path="/Indian-constitution" component={IndianC} />
        <Route exact path="/article-page" component={ArticlePage} />
        <Route exact path="/single-article-page/:slug" component={Singlearticle} />
-       <Route exact path="/postyourarticle/article" component={Postpage} />
-       <Route exact path="/postyourarticle/login" component={Login} />
-       <Route exact path="/postyourarticle/article" component={Postpage} />
-       <Route exact path="/postyourarticle/news-and-update" component={NewsandUpdate} />
-       <Route exact path="/postyourarticle/subscriber" component={Subscriber} />
 
 
        

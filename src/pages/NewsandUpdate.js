@@ -31,8 +31,9 @@ export default function NewsandUpdate() {
         }
 
         await firebase.newsandupdate(news).then(() =>{
-            console.log("post created sucessfully");
-            alert("Your Article has been saved on draft");
+            setIsBusy(true);
+            console.log("news created sucessfully");
+            alert("Your news or update has been published go to home page to see it.");
             setIsBusy(false);
             setRedirect(true);
 
@@ -47,9 +48,14 @@ export default function NewsandUpdate() {
     if(isBusy){
            createform =(
             <div>
-            <p>Request is being proceed</p>
-            <img style={{width:"5",height:"5"}}  src={loading}></img>
-        </div>
+                   <br /><br />
+
+                   
+                   <div className="loader">
+                   <p align="center">Request is being proceed</p>
+                   <img src={loading}></img>
+                   </div>
+               </div>
            )
     }else {
         createform =(

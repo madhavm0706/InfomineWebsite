@@ -2,6 +2,8 @@ import React from 'react';
 //import firebase from "../firebase/Firebase";
 import * as firebase from 'firebase';
 import 'firebase/firestore';
+import loading from '../images/loading-arrow.gif';
+
 
 class ContactUs extends React.Component {
     constructor() {
@@ -10,7 +12,8 @@ class ContactUs extends React.Component {
          email: "",
          message: "",
          name: "",
-         number: ""
+         number: "",
+         
         };
       }
 
@@ -23,6 +26,7 @@ class ContactUs extends React.Component {
       
       addUser = e => {
         e.preventDefault();
+        
         const db = firebase.firestore();
         db.settings({
           timestampsInSnapshots: true
@@ -38,10 +42,16 @@ class ContactUs extends React.Component {
           email: "",
           message: "",
           name: "",
-          number: ""
+          number: "",
+          
+          
         });
       };
+
+
   render() {
+       
+
     return (
         <div className="container">
             <h3 style={{textAlign:"center"}}>Contact US</h3><br /><br />

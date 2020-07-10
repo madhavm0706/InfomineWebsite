@@ -7,7 +7,7 @@ import img from '../images/infomine.jpg';
 import loading from '../images/loading-arrow.gif';
 
 
-export default function Article(props) {
+export default function ArticleDraft(props) {
 
     const [timer,setTimer] = useState(false);
     const [editMode,setEditMode] = useState(false);
@@ -24,7 +24,7 @@ export default function Article(props) {
 
 
     const getPost = async (postid) =>{
-        const _post = await firebase.getPost(postid).catch(err =>{
+        const _post = await firebase.getPostDraft(postid).catch(err =>{
             console.log(err);
             return err;
         });
@@ -57,7 +57,7 @@ export default function Article(props) {
 
             
             <div className="loader">
-            <p align="center">Loading Article</p>
+            <p align="center">Loading Data</p>
             <img src={loading}></img>
             </div>
         </div>

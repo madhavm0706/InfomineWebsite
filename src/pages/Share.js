@@ -12,7 +12,6 @@ export default function Share(props) {
     const [route,setRedirect] = useState(false);
     const [fetchsharea,setFetchsharea] = useState(false);
     const [isbusy,setIsbusy] = useState(false);
-    const [isbusyshare,setIsbusyshare] = useState(false);
 
     
 
@@ -34,7 +33,7 @@ export default function Share(props) {
        
     }
     const sharearticle = async () =>{
-         setIsbusyshare(true);
+         
         let newPost ={
             id: postid,
             name: post.name,
@@ -47,7 +46,7 @@ export default function Share(props) {
             user: post.user
             
           }
-
+          setRedirect(true);
     
 
 
@@ -59,7 +58,7 @@ export default function Share(props) {
             return err;
         })
 
-        setIsbusyshare(false);
+        
 
     }
     
@@ -141,12 +140,30 @@ export default function Share(props) {
     }
     
     }
-    
-
     useEffect(() =>{
         getdraftarticle(props.match.params.id);
         fetch(props.match.params.id);
-    },[props.match.params.id]);
+    },[props.match.params.id]); 
+
+    let share;
+    if(route){
+       share =(
+           <div>
+                  <br /><br />
+
+                  
+                  <div className="loader">
+                  <p align="center">Request is being proceed</p>
+                  <img src={loading}></img>
+                  </div>
+              </div>
+       )
+        return <Redirect to="/postyourarticle/drafts" />
+    }
+    
+    
+
+    
 
    
     
@@ -154,7 +171,7 @@ export default function Share(props) {
 
     return (
         <div>
-          
+          {share}
           {button}
         </div>
     )
