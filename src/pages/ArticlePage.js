@@ -68,7 +68,7 @@ export default function Posteddata() {
                 <Link to={"/postyourarticle/article/"+post.id} >
                 <div class="card card-item snip1527">
                      <div class="image">
-                      <img src={image} alt="pr-sample23" />
+                      <img src={post.data.cover} alt="pr-sample23" />
                      </div>
                 <figcaption className="no-expand">
                     
