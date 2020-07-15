@@ -12,8 +12,8 @@ export default function Footercontent() {
 								  
 														<ul className="footer-links">
 														  <li><a href="">About Us</a></li>
-														  <li><a >Career</a></li>
-														  <li><a >Term & Conditions</a></li>
+														  {/* <li><a >Career</a></li> */}
+														  {/* <li><a >Term & Conditions</a></li> */}
 														</ul>
 													  </div>
 										</div>
@@ -22,9 +22,9 @@ export default function Footercontent() {
 														<h6>Quick Links</h6><Colerdline color="#cc2127" marginleft="50" marginright="50" />
 								  
 														<ul className="footer-links">
-														  <li><Link to="/Income-tax">Income Tax</Link></li>
+														  {/* <li><Link to="/Income-tax">Income Tax</Link></li> */}
 														  <li><Link to="/contact-us" >Contact Us</Link></li>
-														  <li><Link to="/Indian-constitution" >Indian Constitution</Link></li>
+														  {/* <li><Link to="/Indian-constitution" >Indian Constitution</Link></li> */}
 														</ul>
 													  </div>
 											</div>
