@@ -34,7 +34,7 @@ const Navbar = () => {
 												
 											</ul>
 										</li> */}
-										<li><Link to="/postyourarticle/login" >Login</Link></li>
+										{/* <li><Link to="/postyourarticle/login" >Login</Link></li> */}
 										<li><Link to="/contact-us" >Contact Us</Link></li>
 										
 									</ul>

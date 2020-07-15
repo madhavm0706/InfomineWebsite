@@ -5,12 +5,12 @@ import {Link} from 'react-router-dom';
 
 export default function Articledats({articleinfo}) {
 
-    const {name,publishedBy, date,month,slug,description,image} = articleinfo;
+    const {id,name,publishedBy, date,month,slug,description,image} = articleinfo;
     return (
         <> 
             
             <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                <Link to={`/single-article-page/${slug}`} >
+                <Link to={`/postyourarticle/article/${id}`} >
                 <div class="card card-item snip1527">
                      <div class="image">
                       <img src={image} alt="pr-sample23" />
