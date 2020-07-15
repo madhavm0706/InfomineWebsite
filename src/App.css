@@ -571,43 +571,20 @@ ul.sub-menu a::before {
 }
 
 
-.titleBar {
-    z-index: 2;
-    display: inline-block;
-    background: rgba(0,0,0,.5);
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    transform: translateY(100%);
-    padding: 20px 30px;
-    transition: .3s;
-    color: #fff;
+.slidercaption{
+	background-color: black;
+	opacity: 0.8;
 }
 
-.titleBar * {
-    transform: translate(-20px, 30px);
-    transition: all 700ms cubic-bezier(0.37, 0.31, 0.2, 0.85) 200ms;
-    opacity: 0;
+.slidercaption .slidercaptionname{
+	font-size: 20px;
 }
-
-.titleBarTop .titleBar * {
-    transform: translate(-20px, -30px);
-}
-
-.slider:hover .titleBar,
-.slider:hover .titleBar * {
-    transform: translate(0);
-    opacity: 1;
-}
-
-.titleBarTop .titleBar {
-    top: 0;
-    bottom: initial;
-    transform: translateY(-100%);
-}
-
  
-
+@media(max-width:600px){
+	.sliderimg{
+		width: 100%;
+	}
+}
 
 
 

@@ -1,68 +1,4 @@
-// import React from 'react';  
-// import Carousel from 'react-bootstrap/Carousel' 
 
-// export default function ImageSlider() {
-//     return (
-     
-
-
-// <div className="slider" id="slider1">
-//     <Carousel>
-//         <Carousel.Item style={{'height':"500px"}} >  
-//             <img alt="Slider" className="sliderimg"  
-              
-//                 src={"https://firebasestorage.googleapis.com/v0/b/infomine-basic.appspot.com/o/1594740129127..jpg?alt=media&token=83944015-8f74-43a5-b5b8-b12d5f001a7c"}  />  
-//             <Carousel.Caption>  
-//                 <h3>1</h3>  
-//             </Carousel.Caption>  
-//         </Carousel.Item  >
-        
-//         <Carousel.Item style={{'height':"500px"}} >  
-//             <img alt="Slider" className="sliderimg"  
-                
-//                 src={"https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/jungle.jpg"}  />  
-//             <Carousel.Caption>  
-//                 <h3>2</h3>  
-//             </Carousel.Caption>  
-//         </Carousel.Item  >
-
-//         <Carousel.Item style={{'height':"500px"}} >  
-//             <img alt="Slider"   className="sliderimg"
-                  
-//                 src={"https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/1200_bodie-11.jpg"}  />  
-//             <Carousel.Caption>  
-//                 <h3>3</h3>  
-//             </Carousel.Caption>  
-//         </Carousel.Item  >
-
-//         <Carousel.Item style={{'height':"500px"}} >  
-//             <img alt="Slider"  className="sliderimg"
-                 
-//                 src={"https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/1200_bodie-11.jpg"}  />  
-//             <Carousel.Caption>  
-//                 <h3>4</h3>  
-//             </Carousel.Caption>  
-//         </Carousel.Item  >
-//         <Carousel.Item style={{'height':"500px"}} >  
-//             <img alt="Slider"  className="sliderimg"
-                  
-//                 src={"https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/1200_bodie-11.jpg"}  />  
-//             <Carousel.Caption>  
-//                 <h3>5</h3>  
-//             </Carousel.Caption>  
-//         </Carousel.Item  >
-
-//     </Carousel>
-   
-// </div>
-
-
-
-
-
-  
-//     )
-// }
 
 import React,{useEffect,useState} from 'react';
 import firebase from '../firebase/Firebase';
@@ -77,6 +13,7 @@ export default function ImageSlider() {
     const {state,dispatch} = React.useContext(Articles);
     const [isBusy,setIsBusy] = useState(false);
 
+    const month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
     const getPostedArticles = async () =>{
         setIsBusy(true);
@@ -121,9 +58,15 @@ export default function ImageSlider() {
                    
                     
                     <Carousel.Item style={{'height':"500px"}} >
+                    <Link to={"/artice"+post.id} >
+                      <img style={{opacity:"0.5"}} src={post.data.cover} alt="Glimpse of article" className="sliderimg"/>
                     
-                      <img src={post.data.cover} alt="Glimpse of article" className="sliderimg"/>
-                    
+                      <Carousel.Caption className="slidercaption">  
+                         <p className="slidercaptionname">{post.data.name}</p>  
+                         <p className="latestname"><i class="fas fa-user"></i>&nbsp;{post.data.publishedBy} &nbsp;&nbsp;&nbsp;&nbsp; <span className="latestname"><i class="fas fa-calendar"></i>&bnsp;{post.data.date.slice(3,5)}-{month[parseInt((post.data.date.slice(0,2)))-1]}-{post.data.date.slice(6,10)}</span></p>
+
+                         </Carousel.Caption>
+                         </Link>
                     </Carousel.Item>
                      
                 
