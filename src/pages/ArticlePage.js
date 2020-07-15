@@ -44,8 +44,8 @@ export default function Posteddata() {
             <div className="row latestcard">
             <div className=" col-12">
                 
-                <div className="card__description loading3"></div><br />
-                <div className="card__description loading2"></div><br />
+                <div className="card__description loading4"></div><br />
+                
     
     
                 
@@ -59,13 +59,13 @@ export default function Posteddata() {
     }else{
         content =(
 
-            <div className="row styling">
+            <div className="row">
             {state.posts.map((post,i) =>{
                 return(
                     <>
                     
                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                <Link to={"/postyourarticle/article/"+post.id} >
+                <Link to={"/article/"+post.id} >
                 <div class="card card-item snip1527">
                      <div class="image">
                       <img src={post.data.cover} alt="pr-sample23" />
