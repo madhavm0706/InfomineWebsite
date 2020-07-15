@@ -118,7 +118,7 @@ export default function ImageSlider() {
            <Carousel>
             {state.posts.map((post,i) =>{
                 return(
-                    <>
+                   
                     
                     <Carousel.Item style={{'height':"500px"}} >
                     
@@ -129,7 +129,7 @@ export default function ImageSlider() {
                 
                 
              
-                       </>
+                       
 
                 )
             })}
