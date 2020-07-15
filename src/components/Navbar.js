@@ -13,7 +13,9 @@ const Navbar = () => {
 								<div class="col-12 col-md-12 main_nav_cover" id="nav">							
 									<ul id="main-menu">
 											<li><Link to="/" >Home</Link></li>
-											<li><Link to="/article-page" >Articles</Link></li>
+											<li><Link to="/article-page" >Posts</Link></li>
+											<li><Link to="/" >About Us</Link></li>
+
 
 	
 										{/* <li class="menu-item-has-children"><a>Taxation</a>
