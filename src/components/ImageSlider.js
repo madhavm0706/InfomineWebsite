@@ -72,7 +72,7 @@ export default function ImageSlider() {
                    
                     
                     <Carousel.Item style={{'height':"500px"}} >
-                    <Link to={"/artice"+post.id} >
+                    <Link to={"/article/"+post.id} >
                       <img style={{opacity:"0.5"}} src={post.data.cover} alt="Glimpse of article" className="sliderimg"/>
                     
                       <Carousel.Caption className="slidercaption">  
