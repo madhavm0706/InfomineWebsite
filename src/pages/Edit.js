@@ -197,9 +197,9 @@ export default function Edit(props) {
              } }
 
              
-
-             onChange={handleCkeditorState}
              data ={post.discription}
+             onChange={handleCkeditorState}
+             
              
          />  
 

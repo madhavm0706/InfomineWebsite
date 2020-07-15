@@ -27,6 +27,7 @@ export default function NewsAndUpdate() {
         getnewsandupdates();
     },[]);
 
+    
     let content;
 
     const arr = [1,2];
@@ -54,16 +55,17 @@ export default function NewsAndUpdate() {
                  
                 
 
-                     {news.map(item =>{
+                     {news.map((item,i) =>{
 
                          return (
+                            
                             <div className="row newsInfoContent">
                             <div className="col-1">
                             <i className="fa fa-hand-o-right"></i>
                             </div>
                             <div className="col-11">
 
-                 
+                           
                  
                             <p className="newsContent">{item.data.news} <br />
                              Date:- {item.data.date} <a className="newsLink" href={item.data.url}>click Here</a> to read the article</p>

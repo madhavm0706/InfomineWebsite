@@ -104,6 +104,8 @@ var firebaseConfig = {
 
     }
 
+   
+
       async createPost(post){
           const storageRef = firebase.storage().ref();
           const storageChild = storageRef.child(post.cover.name);

@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react';
 import img from '../images/infomine.jpg';
 import NewsAndUpdate from '../pages/NewsAndUpdate';
 import Subscribe from '../components/Subscribe';
+import {Link} from 'react-router-dom';
 
 import firebase from '../firebase/Firebase';
 import {Articles} from '../context/Articlecontext';
@@ -74,7 +75,7 @@ if(isBusy){
                               
                               {state.posts.map(post =>{
                                   return (
-                                    <div className="row latestcard">
+                                    <Link to={"/article/"+post.id} > <div className="row latestcard">
                                     <div className=" col-4">
                                         <div className="latestcardimg">
                                         <img src={img} ></img>
@@ -87,7 +88,7 @@ if(isBusy){
                                   <p>{post.data.name}</p>
                                   <p className="latestname"><i class="fas fa-user"></i>{post.data.publishedBy} &nbsp;&nbsp;&nbsp;&nbsp; <span className="latestname"><i class="fas fa-calendar"></i>{post.data.date}</span></p>
                                       </div>
-                                    </div>
+                                    </div></Link>
                                   )
                               })}
 
@@ -141,7 +142,7 @@ if(isBusy){
                           </div>
                       </div>
                       <div className="col-12">
-                      <p className="morearticle">Show More Articles....</p>
+                      <Link to="/article-page" ><p className="morearticle">Show More Articles....</p></Link>
 
                           
                       </div>
