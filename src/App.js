@@ -73,7 +73,7 @@ function App() {
           <Route exact path="/postyourarticle/article-by-other-admin" component={Articleadmin} />
           <Route exact path ="/postyourarticle/articleondraft/:id" component={ArticleDraft}/>
 
-          <Route exact path ="/postyourarticle/article/:id" component={Article}/>
+          <Route exact path ="/article/:id" component={Article}/>
           <Route exact path ="/postyourarticle/drafts/:id" component={Delete}/>
           <Route exact path ="/postyourarticle/drafts/share/:id" component={Share}/>
           <Route exact path ="/postyourarticle/query" component={Query}/>
