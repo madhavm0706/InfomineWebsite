@@ -144,14 +144,20 @@ a.link-active,
 	margin-left: 10px;
 	border-radius: 3px; 
 }
+.card__description.loadingslider { 
+	height: 500px;
+	width: 100%;
+	
+	border-radius: 3px; 
+}
 /* The loading Class */
-.loading, .loading1,.loading2,.loading3 { 
+.loading, .loading1,.loading2,.loading3,.loadingslider { 
 	position: relative; 
 	background-color: #e2e2e2; 
 } 
 
 /* The moving element */
-.loading1::after,.loading2::after,.loading::after,.loading3::after { 
+.loading1::after,.loading2::after,.loading::after,.loading3::after,.loadingslider::after { 
 	display: block; 
 	content: ""; 
 	position: absolute; 
@@ -565,6 +571,8 @@ ul.sub-menu a::before {
     -webkit-transition: transform .4s;
     transition: transform .4s;
 }
+
+
 
 .sliderimg{
 	height: 500px;

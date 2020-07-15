@@ -45,7 +45,21 @@ export default function ImageSlider() {
 
     if(isBusy){
         content =(
-            <h1>Loading....</h1>
+            <div  className="slider" id="slider1">
+                <div className="row latestcard">
+            <div className=" col-12">
+                
+                <div className="card__description loadingslider"></div><br />
+    
+    
+                
+                
+                
+            </div>
+            
+            </div>
+                </div>
+            
         )
 
     }else{
