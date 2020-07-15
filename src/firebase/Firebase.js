@@ -104,6 +104,8 @@ var firebaseConfig = {
 
     }
 
+   
+
       async createPost(post){
           const storageRef = firebase.storage().ref();
           const storageChild = storageRef.child(post.cover.name);
@@ -162,12 +164,12 @@ var firebaseConfig = {
 
     async getPostedArticles(){
         let postsArray = [];
-        const posts = await firebase.firestore().collection("articles").get();
+        const posts = await firebase.firestore().collection("articles").orderBy("date").get();
         posts.forEach(doc =>{
             postsArray.push({id:doc.id,data:doc.data()})
         });
 
-        return postsArray;
+        return postsArray.reverse();
     }
     async getPostedArticlesbyAdmins(){
         let postsArray = [];
@@ -176,7 +178,7 @@ var firebaseConfig = {
             postsArray.push({id:doc.id,data:doc.data()})
         });
 
-        return postsArray;
+    return postsArray;
     }
 
     

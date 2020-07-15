@@ -18,7 +18,18 @@ export default function Subscribe() {
     
 
 
-    
+    // const emailfinder = async ()=>{
+
+    //     const emailid = firebase.checkSubscriber(emailexists).catch(err=>{
+    //         console.log(err);
+    //         return err;
+    //     });
+
+    //     console.log(emailid);
+
+
+
+    // }
 
     
 
@@ -43,6 +54,8 @@ export default function Subscribe() {
             return err;
         });
 
+        console.log(emailexists);
+
     }
   let createForm;
     if(isBusy){
@@ -65,7 +78,7 @@ export default function Subscribe() {
                      <h5>Subscribe to get latest announcement via E-Mail</h5>
                      <form>
                      <input type="email" placeholder="Enter Your Email-Id" onChange={(e) =>{setEmail(e.target.value)}} required /><br></br><br></br>
-                     <input className="btn btn-primary" type="submit" value="SUBSCRIBE" onClick={emailadder} />
+                     <input className="btn btn-primary" type="submit" value="SUBSCRIBE" onChange={(e)=>{setEmailexits(e.target.value)}}  onClick={emailadder} />
                      </form>
              </div>
              </div>

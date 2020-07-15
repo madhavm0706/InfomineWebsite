@@ -6,7 +6,7 @@ export default function Footercontent() {
     return (
         <div className="container">
 									<div className="row center ">
-										<div className=" col-4">
+										<div className=" col-md-4 col-xs-12">
 												<div className="content">
 														<h6>Organization</h6><Colerdline color="#cc2127" marginleft="50" marginright="50" />
 								  
@@ -17,7 +17,7 @@ export default function Footercontent() {
 														</ul>
 													  </div>
 										</div>
-										<div className="col-4">
+										<div className="col-md-4 col-xs-12">
 												<div className="content">
 														<h6>Quick Links</h6><Colerdline color="#cc2127" marginleft="50" marginright="50" />
 								  
@@ -28,7 +28,7 @@ export default function Footercontent() {
 														</ul>
 													  </div>
 											</div>
-											<div className="col-4 ">
+											<div className="col-md-4 col-xs-12 ">
 													<div className="content">
 															<h6>Contact Info</h6><Colerdline color="#cc2127" width="200" marginleft="50" marginright="50" />
 									  

@@ -33,6 +33,7 @@ import NewsandUpdate from './pages/NewsandUpdate';
 import Subscriber from './pages/Subscriber';
 import ArticleDraft from './pages/ArticleDraft';
 import Edit from './pages/Edit';
+import HomeArticle from './pages/HomeArticle';
  
 import GotoTop from './components/GotoTop';
 
@@ -93,6 +94,8 @@ function App() {
        
        <Route exact path="/" component={Home} />
        <Route exact path="/other" component={Other} />
+       <Route exact path="/article/:id" component={HomeArticle} />
+
        <Route exact path="/contact-us" component={ContactUs} />
        <Route exact path="/coperate-law" component={Coperate} />
        <Route exact path="/economics-and-policy" component={Economics} />
