@@ -11,7 +11,7 @@ export default function Footercontent() {
 														<h6>Organization</h6><Colerdline color="#cc2127" marginleft="50" marginright="50" />
 								  
 														<ul className="footer-links">
-														  <li><a href="">About Us</a></li>
+														  <li><Link to="/about-us">About Us</Link></li>
 														  {/* <li><a >Career</a></li> */}
 														  {/* <li><a >Term & Conditions</a></li> */}
 														</ul>
