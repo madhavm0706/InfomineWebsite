@@ -14,7 +14,7 @@ const Navbar = () => {
 									<ul id="main-menu">
 											<li><Link to="/" >Home</Link></li>
 											<li><Link to="/article-page" >Posts</Link></li>
-											<li><Link to="/" >About Us</Link></li>
+											<li><Link to="/about-us" >About Us</Link></li>
 
 
 	

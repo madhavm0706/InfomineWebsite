@@ -34,6 +34,7 @@ import Subscriber from './pages/Subscriber';
 import ArticleDraft from './pages/ArticleDraft';
 import Edit from './pages/Edit';
 import HomeArticle from './pages/HomeArticle';
+import Aboutus from './pages/Aboutus';
  
 import GotoTop from './components/GotoTop';
 
@@ -93,6 +94,8 @@ function App() {
       
        
        <Route exact path="/" component={Home} />
+       <Route exact path="/about-us" component={Aboutus} />
+
        <Route exact path="/other" component={Other} />
        <Route exact path="/article/:id" component={HomeArticle} />
 
