@@ -588,7 +588,24 @@ ul.sub-menu a::before {
 
 
 
+/* about us */
 
+.aboutushead{
+	font-style: italic;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.aboutushead h2{
+	color: #ca2017;
+}
+
+.aboutuscontent{
+	font-style: oblique;
+	font-size: 20px;
+}
+
+/* about us end */
 
 /* Navbar End */
 
