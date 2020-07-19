@@ -129,10 +129,23 @@ export default function Share(props) {
             <div className="error-size">
             <br/>
         <div className="jumbotron">
-                <h1><MdError /> Share this Article to other admins also <MdError/></h1>
+                <h1><MdError /> Share this Article to:- <MdError/></h1>
                 <br />
-                <button style={{marginLeft:"45%"}} className="btn btn-primary" onClick={sharearticle} >Share </button>  
-      
+                <div className="row">
+                    <div className="col-4">
+                    <button style={{marginLeft:"45%"}} className="btn btn-primary" onClick={sharearticle} >Admins </button>  
+
+                    </div>
+                    <div className="col-4">
+                    <button style={{marginLeft:"45%"}} className="btn btn-primary" onClick={sharearticle} >Users </button>  
+
+                    </div>
+                    <div className="col-4">
+                    <button style={{marginLeft:"45%"}} className="btn btn-primary" onClick={sharearticle} >Image slider </button>  
+
+                    </div>
+                </div>
+
         </div>
         </div>
 

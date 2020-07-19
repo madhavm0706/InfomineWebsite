@@ -17,6 +17,7 @@ export default function Postpage() {
        const [discription, setdiscription] = useState("");
        const [cover, setCover] = useState("");
        const [user, setUser] = useState("");
+       const [field, setfield] = useState("Income Tax");
 
        const [isBusy, setIsBusy] = useState(false);
        const [routeRedirect, setRouteRedirect] = useState(false);
@@ -32,12 +33,12 @@ export default function Postpage() {
        
 
 
-       const handleCkeditorState=(event,editor)=>{
-           const data = editor.getData();
-           setdiscription(data);
+    //    const handleCkeditorState=(event,editor)=>{
+    //        const data = editor.getData();
+    //        setdiscription(data);
 
-           console.log(data)
-       }
+    //        console.log(data)
+    //    }
 
     //    const confirmalert = () => {
     //     const answer = window.confirm('Do you want to post??');
@@ -71,7 +72,7 @@ export default function Postpage() {
 
            let article = {
                name,
-               
+               field,
                publishedBy,
                today,
                discription,
@@ -139,6 +140,7 @@ export default function Postpage() {
             discription,
             cover: cover[0],
             user,
+            field
         }
 
         await firebase.createPostatDraft(article).then(()=>{
@@ -206,6 +208,21 @@ export default function Postpage() {
                     <label>Published By:-</label>
                     <input type="text" name="publishedBy" placeholder="Publisher Name" onChange={(e) => setPublishedBy(e.target.value)} required />
                 </div>
+                <div className="col-4">
+                    <label>Select field:-</label>
+                    <select name="field" id="fields" defaultValue={field} onChange={(e)=>setfield(e.target.value)}>
+                        <option >Income Tax</option>
+                        <option >Goods And Service Tax</option>
+                        <option >Custom and Excise</option>
+                        <option >Corporate Law</option>
+                        <option >Legal Awareness</option>
+                        <option >RBI Policies</option>
+                        <option >Economic Policies</option>
+                        <option >Startups</option>
+                        <option >MSMEs</option>
+
+                        </select>
+                </div>
                 
             </div>
             <div className="row">
@@ -217,20 +234,30 @@ export default function Postpage() {
                     <input type="file" name="image" placeholder="upload your Image" onChange={(e) => setCover(e.target.files)} required />
                 </div>
                 </div>
+                   <br />
+                <div className="row">
+                <div className="col-12">
+                    <p>Convert your word file to Html code
+                    <a style={{color:"red"}} href="https://wordhtml.com/ss">Click Here </a></p>
+                </div>
+                </div>
+
             
 
             <div className="form-group">
 
-            <CKEditor
+            {/* <CKEditor
                 editor={ ClassicEditor }
                 
                 onInit={ editor => {
                     
                 } }
 
-                onChange={handleCkeditorState}
+                onChange={hanvalue="mercedes"dleCkeditorState}
                 
-            />  
+            />   */}<br />
+             <label>Enter Your Html Code:-</label>
+            <textarea  style={{border:"2px solid",height:"auto"}} name="discription" cols="50" rows="40"  onChange={(e)=>{setdiscription(e.target.value)}} ></textarea>
 
             </div>
 

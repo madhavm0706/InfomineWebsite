@@ -20,10 +20,14 @@ export default function Edit(props) {
 
        const [discription, setdiscription] = useState("");
        const [user, setUser] = useState("");
+       const [field, setfield] = useState("");
+
 
        const nameRef = useRef(null);
        const publishedByRef = useRef(null);
        const fileRef = useRef(null);
+       const disref=useRef(null);
+       
    
 
 
@@ -83,7 +87,8 @@ export default function Edit(props) {
             user: user,
             date: today,
             publishedBy: publishedByRef.current.value,
-            discription : discription,
+            discription : disref.current.value,
+            field: field
             
         }
 
@@ -174,6 +179,21 @@ export default function Edit(props) {
                  <label>Published By:-</label>
                  <input type="text" name="publishedBy" placeholder="Publisher Name" ref={publishedByRef} defaultValue = {post.publishedBy} required />
              </div>
+             <div className="col-4">
+                    <label>Select field:-</label>
+                    <select name="field" id="fields" defaultValue={post.field} onChange={(e)=>setfield(e.target.value)}>
+                        <option >Income Tax</option>
+                        <option >Goods And Service Tax</option>
+                        <option >Custom and Excise</option>
+                        <option >Corporate Law</option>
+                        <option >Legal Awareness</option>
+                        <option >RBI Policies</option>
+                        <option >Economic Policies</option>
+                        <option >Startups</option>
+                        <option >MSMEs</option>
+
+                        </select>
+                </div>
              
          </div>
          <div className="row">
@@ -185,11 +205,18 @@ export default function Edit(props) {
                  <input type="file" name="image" placeholder="upload your Image" ref={fileRef} />
              </div>
              </div>
+             <br />
+             <div className="row">
+                <div className="col-12">
+                    <p>Convert your word file to Html code
+                    <a style={{color:"red"}} href="https://wordhtml.com/ss">Click Here </a></p>
+                </div>
+                </div>
          
 
          <div className="form-group">
 
-         <CKEditor
+         {/* <CKEditor
              editor={ ClassicEditor }
              
              onInit={ editor => {
@@ -201,7 +228,13 @@ export default function Edit(props) {
              onChange={handleCkeditorState}
              
              
-         />  
+         />   */}
+
+               <br />
+             <label>Enter Your Html Code:-</label>
+            <textarea  style={{border:"2px solid",height:"auto"}} name="discription" cols="50" rows="40"  ref={disref} defaultValue={post.discription} ></textarea>
+
+           
 
          </div>
 

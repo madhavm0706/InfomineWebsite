@@ -121,6 +121,7 @@ var firebaseConfig = {
             publishedBy: post.publishedBy,
             date: post.today,
             discription: post.discription,
+            field:post.field,
             cover: downloadurl,
             fileRef: fileRef
           }
@@ -146,6 +147,7 @@ var firebaseConfig = {
           name: post.name,
           date: post.today,
           publishedBy: post.publishedBy,
+          field:post.field,
           
           discription: post.discription,
           cover: downloadurl,
@@ -181,7 +183,49 @@ var firebaseConfig = {
     return postsArray;
     }
 
-    
+    // save on image slider
+
+    async imageslider(post){
+        const storageRef = firebase.storage().ref();
+        const storageChild = storageRef.child(post.cover.name);
+        const postcover = await storageChild.put(post.cover);
+        const downloadurl = await storageChild.getDownloadURL();
+        const fileRef = postcover.ref.location.path;
+
+        let new_post = {
+            cover: downloadurl,
+            fileRef: fileRef,
+
+
+        }
+        const firestorePost = await firebase.firestore().collection("postslider").add(new_post).catch(err =>{
+            console.log(err);
+            return err;
+        });
+
+        return firestorePost;
+
+        
+    }
+
+
+    async getimagesliderdata(){
+        let postsArray = [];
+        const posts = await firebase.firestore().collection("postslider").get();
+        posts.forEach(doc =>{
+            postsArray.push({id:doc.id,data:doc.data()})
+        });
+
+    return postsArray;
+
+    }
+    async getimagesliderdata1(postid){
+        const post = await firebase.firestore().collection("postslider").doc(postid).get();
+        const postdata = post.data();
+        return postdata;
+
+
+    }
 
 // save article on draft
     async getPostedArticlesonDraft(userid){
@@ -279,7 +323,8 @@ async updateArticle(postid, postdata){
             date: postdata.date,
             discription: postdata.discription,
             cover: downloadurl,
-            fileRef: fileRef
+            fileRef: fileRef,
+            field: postdata.field,
         }
 
         const post = await firebase.firestore().collection("drafts").doc(postid).set(updatepost,{merge : true}).catch(err =>{

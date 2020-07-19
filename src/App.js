@@ -35,6 +35,7 @@ import ArticleDraft from './pages/ArticleDraft';
 import Edit from './pages/Edit';
 import HomeArticle from './pages/HomeArticle';
 import Aboutus from './pages/Aboutus';
+import Postslider from './pages/Postslider';
  
 import GotoTop from './components/GotoTop';
 
@@ -108,6 +109,7 @@ function App() {
        <Route exact path="/article-page" component={ArticlePage} />
        <Route exact path="/single-article-page/:slug" component={Singlearticle} />
 
+       <Route exact path="/postyourarticle/poston-slider" component={Postslider} />
 
        
 
