@@ -4,35 +4,33 @@ import React,{useEffect,useState} from 'react';
 import firebase from '../firebase/Firebase';
 import {Link} from 'react-router-dom';
 
-import {Articles} from '../context/Articlecontext';
 import image from '../images/infomine.jpg'
 import Carousel from 'react-bootstrap/Carousel' 
 
 export default function ImageSlider() {
 
-    const {state,dispatch} = React.useContext(Articles);
     const [isBusy,setIsBusy] = useState(false);
+    const [posts,setPost]=useState([]);
 
     const month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
     const getPostedArticles = async () =>{
         setIsBusy(true);
 
-        const postsArray = await firebase.getPostedArticles().catch(err =>{
+        const postsArray = await firebase.getimagesliderdata().catch(err =>{
             console.log(err);
             return err;
         });
+        setPost(postsArray);
         setIsBusy(false);
         
 
-        return dispatch({
-            type: "FETCH_POSTS",
-            payload: postsArray
-        });
+        
         
 
     }
-
+     
+    console.log(posts);
     
 
 
@@ -67,7 +65,7 @@ export default function ImageSlider() {
 
             <div className="slider" id="slider1">
            <Carousel>
-            {state.posts.map((post,i) =>{
+            {posts.map((post,i) =>{
                 return(
                    
                     
@@ -76,8 +74,8 @@ export default function ImageSlider() {
                       <img style={{opacity:"0.5"}} src={post.data.cover} alt="Glimpse of article" className="sliderimg"/>
                     
                       <Carousel.Caption className="slidercaption">  
-                         <p className="slidercaptionname">{post.data.name}</p>  
-                         <p className="latestname"><i class="fas fa-user"></i>&nbsp;{post.data.publishedBy} &nbsp;&nbsp;&nbsp;&nbsp; <span className="latestname"><i class="fas fa-calendar"></i>&bnsp;{post.data.date.slice(3,5)}-{month[parseInt((post.data.date.slice(0,2)))-1]}-{post.data.date.slice(6,10)}</span></p>
+                         {/* <p className="slidercaptionname">{post.data.name}</p>   */}
+                         {/* <p className="latestname"><i class="fas fa-user"></i>&nbsp;{post.data.publishedBy} &nbsp;&nbsp;&nbsp;&nbsp; <span className="latestname"><i class="fas fa-calendar"></i>&bnsp;{post.data.date.slice(3,5)}-{month[parseInt((post.data.date.slice(0,2)))-1]}-{post.data.date.slice(6,10)}</span></p> */}
 
                          </Carousel.Caption>
                          </Link>

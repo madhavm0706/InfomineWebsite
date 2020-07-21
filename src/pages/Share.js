@@ -32,7 +32,84 @@ export default function Share(props) {
         setpost(_post);
        
     }
-    const sharearticle = async () =>{
+// share article to admins
+
+const sharearticle = async () =>{
+         
+    let newPost ={
+        id: postid,
+        name: post.name,
+        date: post.date,
+        publishedBy: post.publishedBy,
+        
+        discription: post.discription,
+        cover: post.cover,
+        fileRef: post.fileRef,
+        user: post.user
+        
+      }
+      setRedirect(true);
+
+
+
+
+    await firebase.shareArticle(newPost).then(()=>{
+        console.log("article shared sucessfully");
+    }).catch(err =>{
+        console.log(err);
+        return err;
+    })
+
+    
+
+}
+const confirmessage = () =>{
+        
+    var r = window.confirm("Do You want to share this post to admin");
+    if (r == true) {
+
+        sharearticle();
+
+     
+     
+        
+      } else  {
+         return <Redirect to="/postyourarticle/drafts" />
+          }
+
+}
+
+const shareadmin = () =>{
+        
+    fetch(postid);
+}
+
+const fetch = async (postid)=>{
+    setIsbusy(true);
+    
+    const article = await firebase.fetchshareArticle(postid).catch(err =>{
+        console.log(err);
+        return err;
+    });
+    
+    if(article == null){
+        confirmessage();
+        
+    }else{
+        alert("you have already shared this article to admin");
+
+    }
+
+    setIsbusy(false);
+    
+    
+}
+
+
+// end share articles to admins
+  
+    // shart articles to user
+    const sharearticleuser = async () =>{
          
         let newPost ={
             id: postid,
@@ -51,7 +128,7 @@ export default function Share(props) {
 
 
 
-        await firebase.shareArticle(newPost).then(()=>{
+        await firebase.shareArticleuser(newPost).then(()=>{
             console.log("article shared sucessfully");
         }).catch(err =>{
             console.log(err);
@@ -61,21 +138,131 @@ export default function Share(props) {
         
 
     }
-    
 
-    const fetch = async (postid)=>{
+    const confirmessageuser = () =>{
+        
+        var r = window.confirm("Do You want to share this post to user");
+        if (r == true) {
+
+            sharearticleuser();
+
+         
+         
+            
+          } else  {
+             return <Redirect to="/postyourarticle/drafts" />
+              }
+
+    }
+
+
+    const shareuser = () =>{
+        
+        fetchuser(postid);
+    }
+
+    const fetchuser = async (postid)=>{
         setIsbusy(true);
         
-        const article = await firebase.fetchshareArticle(postid).catch(err =>{
+        const article = await firebase.fetchshareArticleuser(postid).catch(err =>{
             console.log(err);
             return err;
         });
         
         if(article == null){
-            setFetchsharea(false)
+            confirmessageuser();
             
         }else{
-            setFetchsharea(true);
+            alert("you have already shared this article to user");
+
+        }
+
+        setIsbusy(false);
+        
+        
+    }
+
+
+    
+    // end share articles to user
+
+    // share articles to slider
+
+    const sharearticleslider = async () =>{
+         
+        let newPost ={
+            id: postid,
+            name: post.name,
+            date: post.date,
+            publishedBy: post.publishedBy,
+            
+            discription: post.discription,
+            cover: post.cover,
+            fileRef: post.fileRef,
+            user: post.user
+            
+          }
+          setRedirect(true);
+    
+
+
+
+        await firebase.shareArticleslider(newPost).then(()=>{
+            console.log("article shared sucessfully");
+        }).catch(err =>{
+            console.log(err);
+            return err;
+        })
+
+        
+
+    }
+
+
+
+    
+    
+    const shareslider = () =>{
+        
+        fetchsliders(postid);
+    }
+
+  
+    
+    const confirmessageslider = () =>{
+        
+        var r = window.confirm("Do You want to share this post to slider");
+        if (r == true) {
+
+            sharearticleslider();
+
+         
+         
+            
+          } else  {
+             return <Redirect to="/postyourarticle/drafts" />
+              }
+
+    }
+
+    
+
+  
+
+    
+    const fetchsliders = async (postid)=>{
+        setIsbusy(true);
+        
+        const article = await firebase.fetchshareArticleslider(postid).catch(err =>{
+            console.log(err);
+            return err;
+        });
+        
+        if(article == null){
+            confirmessageslider();
+            
+        }else{
+            alert("you have already shared this article to slider");
 
         }
 
@@ -84,6 +271,7 @@ export default function Share(props) {
         
     }
     
+    // end share articles to slider
     
     
     
@@ -92,87 +280,54 @@ export default function Share(props) {
     if(isbusy){
         button =(
             <>
-            <br /><br />
-            <div className="container">
-            <div className="row latestcard">
-               
-        <div className=" col-12">
-            
-            <div className="card__description loading1"></div><br />
-            <div className="card__description loading2"></div><br />
-            </div>
+           <div>
+                   <br /><br />
 
-            
-            
-            
-        </div>
-        
-        </div>
+                   
+                   <div className="loader">
+                   <p align="center">Request is being proceed</p>
+                   <img src={loading}></img>
+                   </div>
+               </div>
         </>
         )
     }else{
-    if(fetchsharea){
-        button =(
+        button=(
+            <div>
             <div className="error-size">
-            <br/>
-        <div className="jumbotron">
-                <h1><MdError /> You have already shared this Article <MdError/></h1>
-                
-        </div>
-        </div>
+  <br/>
+<div className="jumbotron">
+      <h1><MdError /> Share this Article to:- <MdError/></h1>
+      <br />
+      <div className="row">
+          <div className="col-4">
+          <button style={{marginLeft:"45%"}} className="btn btn-primary" onClick={shareadmin}  >Admins </button>  
   
+          </div>
+          <div className="col-4">
+          <button style={{marginLeft:"45%"}} className="btn btn-primary" onClick={shareuser}  >Users </button>  
+
+          </div>
+          <div className="col-4">
+          <button style={{marginLeft:"45%"}} className="btn btn-primary" onClick={shareslider}  >Image slider </button>  
+
+          </div>
+      </div>
+
+</div>
+</div>
+
+</div>
+
 
         )
-        
-    }else{
-        button =(
-            <div className="error-size">
-            <br/>
-        <div className="jumbotron">
-                <h1><MdError /> Share this Article to:- <MdError/></h1>
-                <br />
-                <div className="row">
-                    <div className="col-4">
-                    <button style={{marginLeft:"45%"}} className="btn btn-primary" onClick={sharearticle} >Admins </button>  
-
-                    </div>
-                    <div className="col-4">
-                    <button style={{marginLeft:"45%"}} className="btn btn-primary" onClick={sharearticle} >Users </button>  
-
-                    </div>
-                    <div className="col-4">
-                    <button style={{marginLeft:"45%"}} className="btn btn-primary" onClick={sharearticle} >Image slider </button>  
-
-                    </div>
-                </div>
-
-        </div>
-        </div>
-
-        )
-    }
-    
     }
     useEffect(() =>{
         getdraftarticle(props.match.params.id);
-        fetch(props.match.params.id);
+        // fetch(props.match.params.id);
     },[props.match.params.id]); 
 
-    let share;
-    if(route){
-       share =(
-           <div>
-                  <br /><br />
-
-                  
-                  <div className="loader">
-                  <p align="center">Request is being proceed</p>
-                  <img src={loading}></img>
-                  </div>
-              </div>
-       )
-        return <Redirect to="/postyourarticle/drafts" />
-    }
+   
     
     
 
@@ -182,10 +337,8 @@ export default function Share(props) {
     
     
 
-    return (
-        <div>
-          {share}
-          {button}
-        </div>
+    return (<>
+        {button}
+        </>
     )
 }

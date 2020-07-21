@@ -195,6 +195,7 @@ var firebaseConfig = {
         let new_post = {
             cover: downloadurl,
             fileRef: fileRef,
+            discription: post.discription
 
 
         }
@@ -225,6 +226,21 @@ var firebaseConfig = {
         return postdata;
 
 
+    }
+    async deleteArticlefromslider(postid,fileRef){
+        const storageRef = firebase.storage().ref();
+        await storageRef.child(fileRef).delete().catch(err =>{
+            console.log(err);
+        });
+        console.log("Image deleted");
+        const post = await firebase.firestore().collection("postslider").doc(postid).delete().catch(err =>{
+            console.log(err);
+            
+
+        });
+        console.log("Post deleted");
+
+        return post;
     }
 
 // save article on draft
@@ -374,9 +390,77 @@ async shareArticle(post){
     return postdata;
   }
 
+  async shareArticleuser(post){
+    let newPost ={
+        id: post.id,
+      name: post.name,
+      date: post.date,
+      publishedBy: post.publishedBy,
+      
+      discription: post.discription,
+      cover: post.cover,
+      fileRef: post.fileRef,
+      user: post.user
+        
+      }
+    
+    const postdata = await firebase.firestore().collection("articles").add(newPost).catch(err => {
+        console.log(err);
+        return err;
+    });
+    
+    return postdata;
+  }
+
+  async shareArticleslider(post){
+    let newPost ={
+        id: post.id,
+      name: post.name,
+      date: post.date,
+      publishedBy: post.publishedBy,
+      
+      discription: post.discription,
+      cover: post.cover,
+      fileRef: post.fileRef,
+      user: post.user
+        
+      }
+    
+    const postdata = await firebase.firestore().collection("postslider").add(newPost).catch(err => {
+        console.log(err);
+        return err;
+    });
+    
+    return postdata;
+  }
+
 async fetchshareArticle(postid){
     const postsArray = [];
     const post = await firebase.firestore().collection("share").where("id","==",postid).get();
+    post.forEach(doc =>{
+        postsArray.push({id:doc.id});
+    });
+
+      return postsArray[0];
+     
+      
+}
+
+async fetchshareArticleuser(postid){
+    const postsArray = [];
+    const post = await firebase.firestore().collection("articles").where("id","==",postid).get();
+    post.forEach(doc =>{
+        postsArray.push({id:doc.id});
+    });
+
+      return postsArray[0];
+     
+      
+}
+
+async fetchshareArticleslider(postid){
+    const postsArray = [];
+    const post = await firebase.firestore().collection("postslider").where("id","==",postid).get();
     post.forEach(doc =>{
         postsArray.push({id:doc.id});
     });

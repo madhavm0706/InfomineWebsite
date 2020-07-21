@@ -3,7 +3,7 @@ import firebase from '../firebase/Firebase';
 import Articlesidebar from '../components/Articlesidebar'; 
 import Coloredline from '../components/Colerdline';
 import loading from '../images/loading-arrow.gif';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 
 
@@ -13,18 +13,24 @@ export default function Postslider() {
     const [isBusy,setIsbusy] = useState(false);
     const [url,setUrl] = useState("");
     const [cover,setCover] = useState("");
-
+    const [redirect,setRedirect] = useState(false);
+    const [discription,setDiscription] = useState("");
+    var a;
+    var b;
 
     const addimage = async() =>{
         setIsbusy(true);
 
         let url ={
             cover: cover[0],
+            discription: discription,
         }
 
         await firebase.imageslider(url).then(()=>{
             alert("Image added on slider, Go to home to see it");
             setIsbusy(false);
+            setRedirect(true);
+
         }).catch(err =>{
             console.log(err);
             return err;
@@ -50,7 +56,46 @@ export default function Postslider() {
 
     useEffect(()=>{
           getdata();
-    },[])
+    },[]);
+
+    if(redirect){
+        return <Redirect to="/postyourarticle/poston-slider" />
+    }
+
+
+    function deletepost(a,b){
+
+        setIsbusy(true);
+         
+         
+         firebase.deleteArticlefromslider(a,b).then(() =>{
+            alert("Post deleted ");
+            setIsbusy(false);
+             setRedirect(true);
+         }).catch(err =>{
+             console.log(err);
+             return err;
+         });
+         setRedirect(false);
+
+    }
+
+
+    function confirmmessage(a,b){
+
+        
+        var r = window.confirm("Do You want to delete the post from slider");
+            if (r == true) {
+ 
+             deletepost(a,b);
+             
+                
+              } else  {
+                 return <Redirect to="/postyourarticle/poston-slider" />
+                  }
+              
+ 
+        }
 
     let createform;
     if(isBusy){
@@ -80,9 +125,12 @@ export default function Postslider() {
                 onChange={(e)=>setCover(e.target.files)}
                 required />
                     
-                </div> 
+                </div> <br />
                 
-                
+                <div className="col-12">
+                    <label>Add Discription(optional):-</label>
+                    <input type="text" name="discription" placeholder="add discription" onChange={(e) => setDiscription(e.target.value)}  />
+                </div>
                     <br />
                
                  
@@ -165,7 +213,7 @@ export default function Postslider() {
                        <p>{post.data.date}</p>
             </div>
             <div className="col-md-2 col-sm-12" >
-                <Link to={"/postyourarticle/drafts/"+post.id}><p>Delete</p></Link>
+                <a onClick={() =>confirmmessage(post.id,post.data.fileRef)}><p>Delete</p></a>
             </div>
             
             </div>
