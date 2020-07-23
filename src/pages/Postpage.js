@@ -238,7 +238,7 @@ export default function Postpage() {
                 <div className="row">
                 <div className="col-12">
                     <p>Convert your word file to Html code
-                    <a style={{color:"red"}} href="https://wordhtml.com/ss">Click Here </a></p>
+                    <a style={{color:"red"}} href="https://wordhtml.com/ss" target="_blank">Click Here </a></p>
                 </div>
                 </div>
 

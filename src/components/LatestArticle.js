@@ -36,7 +36,7 @@ useEffect(() =>{
     getLatestArticle()
 },[]);
 
-
+console.log(state);
 var a=5;
 let content;
 if(isBusy){

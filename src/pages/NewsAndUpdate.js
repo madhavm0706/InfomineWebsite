@@ -15,11 +15,13 @@ export default function NewsAndUpdate() {
             return err;
         });
 
-        setNews(news);
+        // setNews(news);
         setIsBusy(false);
 
         
     }
+
+
 
     console.log(news);
 
@@ -31,6 +33,7 @@ export default function NewsAndUpdate() {
     let content;
 
     const arr = [1,2];
+    
 
     if(isBusy){
           content =(

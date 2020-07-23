@@ -80,7 +80,7 @@ function App() {
           <Route exact path ="/postyourarticle/drafts/share/:id" component={Share}/>
           <Route exact path ="/postyourarticle/query" component={Query}/>
           <Route exact path="/postyourarticle/article" component={Postpage} />
-          <Route exact path="/postyourarticle/article" component={Postpage} />
+          <Route exact path="/postyourarticle/posted-article/:id" component={Singlearticle} />
           <Route exact path="/postyourarticle/news-and-update" component={NewsandUpdate} />
           <Route exact path="/postyourarticle/subscriber" component={Subscriber} />
           <Route exact path ="/postyourarticle/drafts/edit/:id" component={Edit}/>
@@ -107,7 +107,6 @@ function App() {
        <Route exact path="/Income-tax" component={IncomeTax} />
        <Route exact path="/Indian-constitution" component={IndianC} />
        <Route exact path="/article-page" component={ArticlePage} />
-       <Route exact path="/single-article-page/:slug" component={Singlearticle} />
 
        <Route exact path="/postyourarticle/poston-slider" component={Postslider} />
 

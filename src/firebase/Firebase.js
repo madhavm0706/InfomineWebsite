@@ -5,13 +5,14 @@ import 'firebase/storage';
 
 
 var firebaseConfig = {
-    apiKey: "AIzaSyCmbGzoqb95PSr0DQ8uL6mjHJ835Xf0MjU",
-    authDomain: "infomine-basic.firebaseapp.com",
-    databaseURL: "https://infomine-basic.firebaseio.com",
-    projectId: "infomine-basic",
-    storageBucket: "infomine-basic.appspot.com",
-    messagingSenderId: "449759910377",
-    appId: "1:449759910377:web:b55fd5334f8f3513539378"
+    apiKey: "AIzaSyCxZhuiY1HkWQnEoG422vwh1qLKpAtcGbw",
+    authDomain: "infominedata.firebaseapp.com",
+    databaseURL: "https://infominedata.firebaseio.com",
+    projectId: "infominedata",
+    storageBucket: "infominedata.appspot.com",
+    messagingSenderId: "890119794209",
+    appId: "1:890119794209:web:eded01a9bcf0e8e7fdbd60",
+    measurementId: "G-H2BGE80R48"
   };
 
 
@@ -425,7 +426,7 @@ async shareArticle(post){
       user: post.user
         
       }
-    
+        
     const postdata = await firebase.firestore().collection("postslider").add(newPost).catch(err => {
         console.log(err);
         return err;

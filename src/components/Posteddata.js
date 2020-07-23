@@ -67,7 +67,7 @@ export default function Posteddata() {
                     <p>{i+1}</p>
                     </div>
                     <div className="col-md-4 col-sm-12" >
-                <Link to={"/postyourarticle/article/"+post.id}><p style={{fontStyle:"italic",color:"red"}}>{post.data.name}</p></Link>
+                <Link to={"/postyourarticle/posted-article/"+post.id}><p style={{fontStyle:"italic",color:"red"}}>{post.data.name}</p></Link>
                     </div>
                     <div className="col-md-3 col-sm-12" >
                 <p>{post.data.publishedBy}</p>

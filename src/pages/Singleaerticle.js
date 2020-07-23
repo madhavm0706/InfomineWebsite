@@ -1,36 +1,105 @@
-import React, { Component } from 'react';
-import {ArticleContext} from '../Context';
+import React,{useEffect,useRef,useState} from 'react';
+import {Redirect} from 'react-router-dom';
 
-export default class Singleaerticle extends Component {
+import firebase from '../firebase/Firebase';
+import ReactHtmlParser from 'react-html-parser';
+import img from '../images/infomine.jpg';
+import loading from '../images/loading-arrow.gif';
 
-    constructor(props) {
-        super(props);
-        
 
-        this.state = {
-            slug: this.props.match.params.slug
-        };
+export default function ArticleDraft(props) {
 
-        
+    const [timer,setTimer] = useState(false);
+    const [editMode,setEditMode] = useState(false);
+    const [userstate,setUserstate] = useState(false);
+    const [isBusy,setIsBusy] = useState(false);
+    const [post,setPost] = useState("");
+
+    const titleRef = useRef(null);
+    const contentRef = useRef(null);
+    const fileRef = useRef(null);
+
+    const [postid,setPostid] = useState("");
+    const [routeRedirect,setRouteRedirect] = useState(false);
+
+
+    const getPost = async (postid) =>{
+        const _post = await firebase.getPostedArticle(postid).catch(err =>{
+            console.log(err);
+            return err;
+        });
+
+        setPost(_post);
+        console.log(_post);
     }
-           static contextType = ArticleContext;
+
+    useEffect(() =>{
+        setTimer(true);
+        setPostid(props.match.params.id);
+        getPost(props.match.params.id);
+
+        setTimeout(() => setTimer(false), 1000);
+    },[props.match.params.id]);
+
     
-    render() {
 
-        const {getarticle} = this.context;
-        const article = getarticle(this.state.slug);
-        console.log(article);
+    const redirect = routeRedirect;
+    if(redirect){
+        return <Redirect to="/" />
+    }
 
-        if(!article){
-            return(
-                <div>No such article could found.......</div>
-            )
-        }
+    let currentPost;
 
-        const {name,publishedBy} = article;
+    if(timer){
+        currentPost=(
+            <div>
+            <br /><br />
 
-        return(
-        <div>{name}<br></br> {publishedBy}</div>
+            
+            <div className="loader">
+            <p align="center">Loading Data</p>
+            <img src={loading}></img>
+            </div>
+        </div>
+        )
+    }else{
+        currentPost=(
+            <>
+            
+                <div className="borderbox container">
+
+                   <div className="row">
+                       <div className="col-2">
+                     <img className="logo" src={img}  /> 
+
+                        </div>
+
+                        <div class="col-10">
+        <h4 class="heading" align="right">{post.name}</h4>
+        <h5 class="writer" align="right">{post.publishedBy}</h5><hr />
+
+                 </div>
+
+                 </div>
+        <div class="contentbox">
+           {ReactHtmlParser(post.discription)}
+
+        </div>
+
+                   
+                
+                 </div>
+
+            </>
         )
     }
+
+
+
+    return (
+        <>
+       {currentPost}
+    
+        </>
+    )
 }
