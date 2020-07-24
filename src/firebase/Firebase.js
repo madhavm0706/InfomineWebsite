@@ -14,7 +14,7 @@ var firebaseConfig = {
     appId: "1:890119794209:web:eded01a9bcf0e8e7fdbd60",
     measurementId: "G-H2BGE80R48"
   };
-
+  
 
   class Firebase{
       constructor(){
@@ -262,6 +262,11 @@ var firebaseConfig = {
 
     async getPostedArticle(postid){
         const post = await firebase.firestore().collection("articles").doc(postid).get();
+        const postdata = post.data();
+        return postdata;
+      }
+      async getPostedArticleadmin(postid){
+        const post = await firebase.firestore().collection("share").doc(postid).get();
         const postdata = post.data();
         return postdata;
       }

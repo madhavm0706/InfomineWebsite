@@ -36,6 +36,7 @@ import Edit from './pages/Edit';
 import HomeArticle from './pages/HomeArticle';
 import Aboutus from './pages/Aboutus';
 import Postslider from './pages/Postslider';
+import Adminarticle from './pages/Adminarticle';
  
 import GotoTop from './components/GotoTop';
 
@@ -109,6 +110,7 @@ function App() {
        <Route exact path="/article-page" component={ArticlePage} />
 
        <Route exact path="/postyourarticle/poston-slider" component={Postslider} />
+       <Route exact path="/postyourarticle/article/article-by-admin/:id" component={Adminarticle} />
 
        
 

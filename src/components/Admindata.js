@@ -68,7 +68,7 @@ export default function Admindata() {
                     <p>{i+1}</p>
                     </div>
                     <div className="col-md-4 col-sm-12" >
-                <Link style={{color:"green",}} to={"/postyourarticle/article/"+post.id}><p>{post.data.name}</p></Link>
+                <Link style={{color:"green",}} to={"/postyourarticle/article/article-by-admin/"+post.id}><p>{post.data.name}</p></Link>
                     </div>
                     <div className="col-md-3 col-sm-12" >
                 <p>{post.data.publishedBy}</p>
