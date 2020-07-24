@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import firebase from '../firebase/Firebase';
 import {Link} from 'react-router-dom';
+import Pagination from '../components/Pagination';
 
 import {Articles} from '../context/Articlecontext';
 import image from '../images/infomine.jpg'
@@ -10,6 +11,8 @@ export default function Posteddata() {
 
     const {state,dispatch} = React.useContext(Articles);
     const [isBusy,setIsBusy] = useState(false);
+    const [currentPage,setCurrentpage] = useState(1);
+    const [postsPerPage,setPostsPerPage] = useState(12); 
 
     const month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
@@ -39,7 +42,22 @@ export default function Posteddata() {
 
     useEffect(() =>{
         getPostedArticles();
+        
     },[]);
+
+
+    
+
+
+    const indexOfLastPost = currentPage* postsPerPage;
+    const indexofFirstPost = indexOfLastPost- postsPerPage;
+
+    const paginate = (pagenumber) =>{
+        setCurrentpage(pagenumber);
+    }
+    
+
+     
   
    
     let content;
@@ -71,7 +89,7 @@ export default function Posteddata() {
 
 
             <div className="row">
-            {state.posts.map((post,i) =>{
+            {state.posts.slice(indexofFirstPost,indexOfLastPost).map((post,i) =>{
                 return(
                     <>
                     
@@ -131,6 +149,8 @@ export default function Posteddata() {
                             {content} 
                          </div>
                          </div>
+
+                         <Pagination totalposts={state.posts.length} postsperpage={postsPerPage} paginate={paginate} />
                    </div> 
           
 

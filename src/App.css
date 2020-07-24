@@ -617,6 +617,16 @@ ul.sub-menu a::before {
 
 /* Navbar End */
 
+/* page navigation */
+
+.pagenavigation nav ul li{
+	padding-left: 20px;
+	
+	
+}
+
+/* page navigation end */
+
 /* Latest Article */
 
 .latesttitle{
