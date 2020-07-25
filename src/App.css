@@ -648,6 +648,16 @@ ul.sub-menu a::before {
 	padding-left: 20px;
 	padding-bottom: 20px;
 }
+.recommendedarticles{
+	
+	
+	border-left: #000 1px  solid;
+	height: auto;
+	width: 100%;
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-bottom: 20px;
+}
 .morearticle{
 	font-size: 18px;
 	text-align: center;
@@ -659,6 +669,13 @@ ul.sub-menu a::before {
 	box-shadow: 4px 7px 5px 2px rgba(99, 96, 96, 0.75);
 	width: 100%;
 	margin-top: 20px;
+}
+
+.recommendedarticles .latestcard{
+	border: 1px rgb(109, 108, 108) solid;
+	width: 100%;
+	
+
 }
 
 .latestArticle .latestcard:hover{
@@ -676,8 +693,13 @@ ul.sub-menu a::before {
 	font-style: italic;
 }
 
+.recommendedarticles .latestcard .latestname{
+	font-size: 12px;
+	font-style: italic;
+}
 
-.latestArticle .latestcardimg {
+
+.recommendedarticles .latestcardimg,.latestArticle .latestcardimg {
 	
 	width: 100%;
 	height: 100px;
@@ -685,7 +707,9 @@ ul.sub-menu a::before {
 	
 }
 
-.latestArticle .latestcard img{
+
+
+.recommendedarticles .latestcard img,.latestArticle .latestcard img{
 	margin-top: 5px;
 	border-radius: 20%;
 	height: 90px;

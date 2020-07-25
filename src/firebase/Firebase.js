@@ -174,6 +174,16 @@ var firebaseConfig = {
 
         return postsArray.reverse();
     }
+
+    async getrecommendedArticle(field){
+        let postsArray = [];
+        const posts = await firebase.firestore().collection("articles").where("field","==",field).get();
+        posts.forEach(doc =>{
+            postsArray.push({id:doc.id,data:doc.data()})
+        });
+
+        return postsArray;
+    }
     async getPostedArticlesbyAdmins(){
         let postsArray = [];
         const posts = await firebase.firestore().collection("share").get();

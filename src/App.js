@@ -99,7 +99,7 @@ function App() {
        <Route exact path="/about-us" component={Aboutus} />
 
        <Route exact path="/other" component={Other} />
-       <Route exact path="/article/:id" component={HomeArticle} />
+       <Route exact path="/article/:category/:id" component={HomeArticle} />
 
        <Route exact path="/contact-us" component={ContactUs} />
        <Route exact path="/coperate-law" component={Coperate} />

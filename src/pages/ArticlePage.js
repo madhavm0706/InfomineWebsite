@@ -94,7 +94,7 @@ export default function Posteddata() {
                     <>
                     
                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                <Link to={"/article/"+post.id} >
+                <Link to={"/article/"+post.data.field+"/"+post.id} >
 
                 <div class="card card-item snip1527">
                      <div class="image">
