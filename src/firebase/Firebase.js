@@ -5,14 +5,7 @@ import 'firebase/storage';
 
 
 var firebaseConfig = {
-    apiKey: "AIzaSyCxZhuiY1HkWQnEoG422vwh1qLKpAtcGbw",
-    authDomain: "infominedata.firebaseapp.com",
-    databaseURL: "https://infominedata.firebaseio.com",
-    projectId: "infominedata",
-    storageBucket: "infominedata.appspot.com",
-    messagingSenderId: "890119794209",
-    appId: "1:890119794209:web:eded01a9bcf0e8e7fdbd60",
-    measurementId: "G-H2BGE80R48"
+    "Enter Firebase API"
   };
   
 
